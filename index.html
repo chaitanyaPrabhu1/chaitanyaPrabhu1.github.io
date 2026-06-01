@@ -3,17 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chaitanya Prabhu — Curriculum Vitæ</title>
+<title>Chaitanya Prabhu — Backend Engineer</title>
 <meta name="description" content="Chaitanya Prabhu — backend engineer. Distributed systems, network programming, and applied cryptography.">
 <style>
   :root {
-    --desk:        #e6e6e1;   /* the surface the card rests on */
-    --card:        #f7f7f4;   /* Pale Nimbus — subtle off-white */
-    --ink:         #1a1a17;
-    --muted:       #6a675f;
-    --faint:       #8f8c82;
-    --rule:        #dbd9d1;
-    --rule-strong: #aaa79c;
+    --bg:          #f5f5f2;
+    --ink:         #161512;
+    --muted:       #66635b;
+    --faint:       #8d8a80;
+    --rule:        #d6d4cb;
+    --rule-strong: #a6a399;
     --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --serif: Georgia, "Times New Roman", Times, serif;
   }
@@ -25,25 +24,12 @@
     font-size: 17.5px;
     line-height: 1.6;
     color: var(--ink);
-    background: var(--desk);
+    background: var(--bg);
     margin: 0;
-    padding: 3.4rem 1.25rem 4.5rem;
+    padding: 3.6rem 1.4rem 4.5rem;
   }
 
-  main {
-    max-width: 43rem;
-    margin: 0 auto;
-    background-color: var(--card);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520'%3E%3Ctext x='50%25' y='50%25' font-family='Georgia, serif' font-size='300' font-weight='700' fill='%231a1a17' fill-opacity='0.05' text-anchor='middle' dominant-baseline='central'%3ECP%3C/text%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center 40%;
-    border: 1px solid #e2e1db;
-    padding: 3.6rem 3.1rem;
-    box-shadow:
-      0 0 0 1px rgba(0, 0, 0, 0.03),
-      0 1px 2px rgba(0, 0, 0, 0.05),
-      0 28px 60px -32px rgba(0, 0, 0, 0.42);
-  }
+  main { max-width: 43rem; margin: 0 auto; }
 
   a {
     color: var(--ink);
@@ -70,13 +56,16 @@
     filter: grayscale(100%);
   }
 
-  .kicker {
+  .avail {
     font-family: var(--sans);
-    font-size: 0.64rem;
-    letter-spacing: 0.34em;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--faint);
-    margin: 0 0 0.6rem;
+    color: var(--ink);
+    margin: 1rem 0 0;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--rule);
   }
 
   h1 {
@@ -108,7 +97,7 @@
   }
   .contact a { border-bottom: none; }
   .contact a:hover { border-bottom: 1px solid var(--ink); }
-  .contact .sep { color: var(--faint); margin: 0 0.45rem; }
+  .sep { color: var(--faint); margin: 0 0.45rem; }
 
   /* ---------- Sections ---------- */
   h2 {
@@ -219,23 +208,35 @@
   /* ---------- Footer ---------- */
   footer {
     font-family: var(--sans);
-    font-size: 0.64rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
     color: var(--faint);
     border-top: 1px solid var(--rule);
     margin-top: 3rem;
     padding-top: 1.1rem;
   }
+  footer a { border-bottom: none; color: var(--muted); }
+  footer a:hover { border-bottom: 1px solid var(--ink); color: var(--ink); }
+  footer .foot-copy { display: block; margin-top: 0.45rem; letter-spacing: 0.02em; }
 
   @media (max-width: 540px) {
-    body { font-size: 16.5px; padding: 1.4rem 0.9rem 2.4rem; }
-    main { padding: 2.1rem 1.45rem; }
+    body { font-size: 16.5px; padding: 2rem 1.1rem 3rem; }
     h1 { font-size: 1.7rem; letter-spacing: 0.1em; }
     .photo { float: none; display: block; margin: 0 0 1rem; }
     dl.skills { grid-template-columns: 1fr; gap: 0.05rem; }
     dl.skills dt { margin-top: 0.7rem; }
     .proj-head { flex-direction: column; gap: 0.1rem; }
+  }
+
+  @media print {
+    body { background: #fff; color: #000; padding: 0; font-size: 11pt; }
+    main { max-width: none; margin: 0; }
+    a { color: #000; border-bottom: none; }
+    header { border-color: #000; }
+    .avail { border-color: #000; color: #000; }
+    h2 { border-color: #000; }
+    .proj, .row { page-break-inside: avoid; }
+    h2 { page-break-after: avoid; }
   }
 </style>
 </head>
@@ -244,7 +245,6 @@
 
   <header>
     <img class="photo" src="profile1.png" alt="Chaitanya Prabhu" width="104" height="104">
-    <p class="kicker">Curriculum Vitæ</p>
     <h1>Chaitanya Prabhu</h1>
     <p class="title">Backend Engineer</p>
     <p class="contact">
@@ -253,6 +253,7 @@
       <a href="https://www.linkedin.com/in/chaitanya-p-82a534312/">LinkedIn</a><span class="sep">·</span>
       New Delhi, India
     </p>
+    <p class="avail">Available for full-time backend &amp; systems engineering roles</p>
   </header>
 
   <h2>Profile</h2>
@@ -263,14 +264,19 @@
     cryptography.
   </p>
 
-  <h2>Focus</h2>
-  <ul>
-    <li>Performance engineering — cutting latency and resource use under load.</li>
-    <li>Distributed systems and network programming.</li>
-    <li>Applied cryptography and system security.</li>
-    <li>Backend architecture — microservices and REST / GraphQL APIs.</li>
-    <li>LLM systems — retrieval-augmented generation over vector databases.</li>
-  </ul>
+  <h2>Technical Skills</h2>
+  <dl class="skills">
+    <dt>Languages</dt>
+    <dd>C, C++, Python, Java, JavaScript / TypeScript, SQL, Bash</dd>
+    <dt>Backend &amp; Web</dt>
+    <dd>Node.js, FastAPI, Next.js, React, REST, GraphQL</dd>
+    <dt>Infrastructure</dt>
+    <dd>Docker, Kubernetes, AWS, PostgreSQL, Redis, MySQL, MongoDB</dd>
+    <dt>Tools</dt>
+    <dd>Git, GitHub, GitLab, Jira, Confluence, VS Code</dd>
+    <dt>Focus</dt>
+    <dd>Distributed systems, performance engineering, applied cryptography, microservices, RAG / LLM pipelines</dd>
+  </dl>
 
   <h2>Selected Projects</h2>
 
@@ -388,18 +394,6 @@
     Algorithms, System &amp; Network Security.
   </p>
 
-  <h2>Technical Skills</h2>
-  <dl class="skills">
-    <dt>Languages</dt>
-    <dd>C, C++, Python, Java, JavaScript / TypeScript, SQL, Bash</dd>
-    <dt>Backend &amp; Web</dt>
-    <dd>Node.js, FastAPI, Next.js, React, REST, GraphQL</dd>
-    <dt>Infrastructure</dt>
-    <dd>Docker, Kubernetes, AWS, PostgreSQL, Redis, MySQL, MongoDB</dd>
-    <dt>Tools</dt>
-    <dd>Git, GitHub, GitLab, Jira, Confluence, VS Code</dd>
-  </dl>
-
   <h2>Certification</h2>
   <ul>
     <li>SQL (Advanced) — HackerRank · 2023</li>
@@ -421,7 +415,10 @@
   </ul>
 
   <footer>
-    Chaitanya Prabhu · Curriculum Vitæ · Last revised MMXXVI
+    <a href="mailto:chaitanyasprabhu@gmail.com">chaitanyasprabhu@gmail.com</a><span class="sep">·</span>
+    <a href="https://github.com/chaitanyaPrabhu1">GitHub</a><span class="sep">·</span>
+    <a href="https://www.linkedin.com/in/chaitanya-p-82a534312/">LinkedIn</a>
+    <span class="foot-copy">© 2026 Chaitanya Prabhu · New Delhi, India</span>
   </footer>
 
 </main>
