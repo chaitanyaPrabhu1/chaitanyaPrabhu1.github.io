@@ -1,753 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chaitanya Prabhu - CS Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #6366f1;
-            --secondary: #8b5cf6;
-            --dark: #0f172a;
-            --light: #f1f5f9;
-            --accent: #06b6d4;
-            --text: #1e293b;
-            --text-light: #64748b;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            overflow-x: hidden;
-        }
-
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="10" cy="10" r="2" fill="white" opacity="0.1"/></svg>');
-            animation: moveBackground 20s linear infinite;
-        }
-
-        @keyframes moveBackground {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(100px, 100px); }
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 5px solid white;
-            margin-bottom: 1.5rem;
-            object-fit: cover;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: fadeInScale 0.8s ease-out;
-        }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            animation: slideInLeft 0.8s ease-out;
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .hero .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-
-        .hero .location {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: white;
-            color: var(--primary);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn-secondary {
-            border: 2px solid white;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: var(--primary);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        /* Section Titles */
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--dark);
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 2px;
-        }
-
-        /* Education Section */
-        .education-grid {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .education-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-left: 5px solid var(--primary);
-        }
-
-        .education-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .education-card h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-card .degree {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-card .date {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        /* Experience Section */
-        .experience-card {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .experience-card h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-card .company {
-            font-weight: 600;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-card ul {
-            margin-left: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .experience-card li {
-            margin-bottom: 0.8rem;
-            color: var(--text);
-        }
-
-        /* Skills Section */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .skill-category h3 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .skill-tag {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: transform 0.3s;
-        }
-
-        .skill-tag:hover {
-            transform: scale(1.1);
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .project-header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1.5rem;
-        }
-
-        .project-header h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-body {
-            padding: 1.5rem;
-        }
-
-        .project-body ul {
-            margin-left: 1.5rem;
-        }
-
-        .project-body li {
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        /* Achievements Section */
-        .achievements-grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .achievement-card {
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            transition: transform 0.3s;
-        }
-
-        .achievement-card:hover {
-            transform: translateX(10px);
-        }
-
-        .achievement-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .achievement-content h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        /* Scroll Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s, transform 0.6s;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chaitanya Prabhu — Curriculum Vitæ</title>
+<meta name="description" content="Chaitanya Prabhu — systems and backend developer. M.Tech in Computer Science, IIIT Hyderabad.">
+<style>
+  :root {
+    --paper:       #efece4;   /* bone */
+    --ink:         #1b1a16;
+    --muted:       #6c675c;
+    --faint:       #918b7e;
+    --rule:        #d2cdc0;
+    --rule-strong: #a39d8f;
+    --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --serif: Georgia, "Times New Roman", Times, serif;
+  }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--serif);
+    font-size: 17.5px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    margin: 0;
+    padding: 3.2rem 1.25rem 4rem;
+  }
+
+  main { max-width: 43rem; margin: 0 auto; }
+
+  a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule-strong);
+  }
+  a:hover { border-bottom-color: var(--ink); }
+
+  /* ---------- Letterhead ---------- */
+  header {
+    overflow: hidden;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--ink);
+    margin-bottom: 2rem;
+  }
+
+  .photo {
+    float: right;
+    width: 104px;
+    height: 104px;
+    object-fit: cover;
+    margin: 0.1rem 0 0.6rem 1.5rem;
+    border: 1px solid var(--rule-strong);
+    filter: grayscale(100%);
+  }
+
+  .kicker {
+    font-family: var(--sans);
+    font-size: 0.64rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin: 0 0 0.6rem;
+  }
+
+  h1 {
+    font-family: var(--sans);
+    font-size: 2.05rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    line-height: 1.08;
+    margin: 0 0 0.4rem;
+  }
+
+  .title {
+    font-family: var(--sans);
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 1rem;
+  }
+
+  .contact {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .contact a { border-bottom: none; }
+  .contact a:hover { border-bottom: 1px solid var(--ink); }
+  .contact .sep { color: var(--faint); margin: 0 0.45rem; }
+
+  /* ---------- Sections ---------- */
+  h2 {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 2.6rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .subhead {
+    font-family: var(--sans);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 1.5rem 0 0.7rem;
+  }
+
+  p { margin: 0 0 1rem; }
+  .lede { font-size: 1.02rem; }
+
+  ul { list-style: none; padding-left: 0; margin: 0 0 1rem; }
+  li { position: relative; padding-left: 1.2rem; margin-bottom: 0.45rem; }
+  li::before { content: "—"; position: absolute; left: 0; color: var(--faint); }
+
+  /* ---------- Projects ---------- */
+  .proj { margin: 0 0 1.4rem; }
+  .proj-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin: 0 0 0.25rem;
+  }
+  .proj-head .name {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+  }
+  .proj-head .meta {
+    font-family: var(--sans);
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--faint);
+    white-space: nowrap;
+  }
+  .proj p { font-size: 0.95rem; margin: 0.1rem 0 0.45rem; color: #2b2922; }
+  .stack {
+    font-family: var(--sans);
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ---------- CV rows ---------- */
+  .row { margin-bottom: 1.1rem; }
+  .row .line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .row .where {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.92rem;
+    letter-spacing: 0.01em;
+  }
+  .row .when {
+    font-family: var(--sans);
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--faint);
+    white-space: nowrap;
+  }
+  .row .what { color: var(--muted); }
+  .row p { margin: 0.35rem 0 0; font-size: 0.95rem; }
+
+  /* ---------- Skills matrix ---------- */
+  dl.skills {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 0.2rem 1.4rem;
+    margin: 0;
+  }
+  dl.skills dt {
+    font-family: var(--sans);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 0.18rem;
+  }
+  dl.skills dd { margin: 0; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    font-family: var(--sans);
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--faint);
+    border-top: 1px solid var(--rule);
+    margin-top: 3rem;
+    padding-top: 1.1rem;
+  }
+
+  @media (max-width: 540px) {
+    body { font-size: 16.5px; padding-top: 2.2rem; }
+    h1 { font-size: 1.7rem; letter-spacing: 0.1em; }
+    .photo { float: none; display: block; margin: 0 0 1rem; }
+    dl.skills { grid-template-columns: 1fr; gap: 0.05rem; }
+    dl.skills dt { margin-top: 0.7rem; }
+    .proj-head { flex-direction: column; gap: 0.1rem; }
+  }
+</style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <i class="fas fa-code"></i>
-                Chaitanya Prabhu
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#achievements">Achievements</a></li>
-            </ul>
-        </nav>
-    </header>
+<main>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <img id="profileImage" src="profile1.png" alt="Chaitanya Prabhu" class="profile-img">
-            <h1>Chaitanya Prabhu</h1>
-            <p class="subtitle">Computer Science Graduate Student</p>
-            <div class="location">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Hyderabad, Telangana, India</span>
-            </div>
-            <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">
-                    <i class="fas fa-briefcase"></i>
-                    View Projects
-                </a>
-                <a href="#achievements" class="btn btn-secondary">
-                    <i class="fas fa-trophy"></i>
-                    Achievements
-                </a>
-            </div>
-        </div>
-    </section>
+  <header>
+    <img class="photo" src="profile1.png" alt="Chaitanya Prabhu" width="104" height="104">
+    <p class="kicker">Curriculum Vitæ</p>
+    <h1>Chaitanya Prabhu</h1>
+    <p class="title">Systems &amp; Backend Developer</p>
+    <p class="contact">
+      <a href="mailto:chaitanyasprabhu@gmail.com">chaitanyasprabhu@gmail.com</a><span class="sep">·</span>
+      <a href="https://github.com/chaitanyaPrabhu1">GitHub</a><span class="sep">·</span>
+      <a href="https://www.linkedin.com/in/chaitanya-p-82a534312/">LinkedIn</a><span class="sep">·</span>
+      New Delhi, India
+    </p>
+  </header>
 
-    <section id="education" class="container">
-        <h2 class="section-title fade-in">Education</h2>
-        <div class="education-grid">
-            <div class="education-card fade-in">
-                <h3>IIIT Hyderabad</h3>
-                <p class="degree">Master in Computer Science and Information Security</p>
-                <p class="date"><i class="fas fa-calendar"></i> Jul 2025 - Present</p>
-            </div>
-            <div class="education-card fade-in">
-                <h3>NIT Silchar</h3>
-                <p class="degree">Bachelor in Civil Engineering</p>
-                <p class="date"><i class="fas fa-calendar"></i> Nov 2020 - May 2024</p>
-                <p style="margin-top: 0.5rem;"><strong>GPA:</strong> 7.40</p>
-            </div>
-        </div>
-    </section>
+  <h2>Profile</h2>
+  <p class="lede">
+    Systems and backend developer focused on high-performance, fault-tolerant software — from the
+    language runtime down to the bytes on the wire. Currently reading for an M.Tech in Computer
+    Science at <a href="https://www.iiit.ac.in/">IIIT Hyderabad</a>; previously Civil Engineering
+    at <a href="https://www.nits.ac.in/">NIT Silchar</a>. Recent work, in C++ and Python, centers
+    on distributed systems, network programming, and applied cryptography.
+  </p>
 
-    <section id="experience" class="container" style="background: var(--light);">
-        <h2 class="section-title fade-in">Experience</h2>
-        <div class="experience-card fade-in">
-            <h3>Engineering Intern</h3>
-            <p class="company">Deendayal Port Authority, Kandla, Gujarat</p>
-            <p class="date"><i class="fas fa-calendar"></i> May 2023 - Jul 2023</p>
-            <ul>
-                <li>Gained exposure to digital infrastructure tools and government software platforms used for daily operations.</li>
-                <li>Assisted in the development and maintenance of government platforms focused on operational management.</li>
-                <li>Utilized technical software (AutoCAD, Oracle DB, Excel Macros, SQL, etc.) for structural planning and data visualization.</li>
-                <li>Worked with large-scale datasets (SAP-S, Oracle DB) and contributed to real-time data tracking.</li>
-                <li>Designed spatial analysis of oil jetty-8 layout using Esri ArcGIS.</li>
-            </ul>
-        </div>
-    </section>
+  <h2>Focus</h2>
+  <ul>
+    <li>Performance engineering — cutting latency and resource use under load.</li>
+    <li>Distributed systems and network programming.</li>
+    <li>Applied cryptography and system security.</li>
+    <li>Backend architecture — microservices and REST / GraphQL APIs.</li>
+    <li>LLM systems — retrieval-augmented generation over vector databases.</li>
+  </ul>
 
-    <section id="skills" class="container">
-        <h2 class="section-title fade-in">Skills</h2>
-        <div class="skills-container">
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-code"></i> Programming Languages</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">C/C++</span>
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Bash</span>
-                    <span class="skill-tag">HTML</span>
-                    <span class="skill-tag">CSS</span>
-                    <span class="skill-tag">JavaScript</span>
-                </div>
-            </div>
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-database"></i> Databases</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Oracle DB</span>
-                    <span class="skill-tag">MySQL</span>
-                    <span class="skill-tag">SQLite</span>
-                    <span class="skill-tag">MongoDB</span>
-                </div>
-            </div>
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">GitHub</span>
-                    <span class="skill-tag">GitLab</span>
-                    <span class="skill-tag">SAP-S</span>
-                    <span class="skill-tag">Esri ArcGIS</span>
-                    <span class="skill-tag">AutoCAD</span>
-                    <span class="skill-tag">Excel</span>
-                    <span class="skill-tag">Jira</span>
-                    <span class="skill-tag">Confluence</span>
-                    <span class="skill-tag">VS Code</span>
-                </div>
-            </div>
-        </div>
-    </section>
+  <h2>Selected Projects</h2>
 
-    <section id="projects" class="container" style="background: var(--light);">
-        <h2 class="section-title fade-in">Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card fade-in">
-                <div class="project-header">
-                    <h3>Smart Student</h3>
-                    <p style="opacity: 0.9; font-size: 0.9rem;">Sep 2023 - Nov 2023</p>
-                </div>
-                <div class="project-body">
-                    <ul>
-                        <li>Built a desktop-based Student Management System using Java, Swing (FlatLaf), JDBC, and MySQL.</li>
-                        <li>Features admin login, CRUD operations, and real-time student statistics.</li>
-                        <li>Implemented advanced search, subject-wise grade calculation, and CSV data export.</li>
-                        <li>Designed modern, theme-supported GUI with modular code structure.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+  <p class="subhead">Systems &amp; Networking</p>
 
-    <section id="achievements" class="container">
-        <h2 class="section-title fade-in">Achievements</h2>
-        <div class="achievements-grid">
-            <div class="achievement-card fade-in">
-                <div class="achievement-icon">
-                    <i class="fas fa-trophy"></i>
-                </div>
-                <div class="achievement-content">
-                    <h4>GATE CS&IT 2025</h4>
-                    <p>All India Rank 3207 out of 170,825 candidates | Score: 53.62/100</p>
-                </div>
-            </div>
-            <div class="achievement-card fade-in">
-                <div class="achievement-icon">
-                    <i class="fas fa-award"></i>
-                </div>
-                <div class="achievement-content">
-                    <h4>GATE DS&AI 2024</h4>
-                    <p>All India Rank 1588 out of 39,210 candidates | Score: 50.67/100</p>
-                </div>
-            </div>
-            <div class="achievement-card fade-in">
-                <div class="achievement-icon">
-                    <i class="fas fa-star"></i>
-                </div>
-                <div class="achievement-content">
-                    <h4>JEE Mains 2020</h4>
-                    <p>Scored 96.98 percentile</p>
-                </div>
-            </div>
-            <div class="achievement-card fade-in">
-                <div class="achievement-icon">
-                    <i class="fas fa-chess"></i>
-                </div>
-                <div class="achievement-content">
-                    <h4>All India Inter NIT Chess Competition</h4>
-                    <p>Winner at NIT Silchar (2022)</p>
-                </div>
-            </div>
-            <div class="achievement-card fade-in">
-                <div class="achievement-icon">
-                    <i class="fas fa-futbol"></i>
-                </div>
-                <div class="achievement-content">
-                    <h4>All India Inter NIT Football Competition</h4>
-                    <p>Runner-Up at MNIT Jaipur (2023)</p>
-                </div>
-            </div>
-            <div class="achievement-card fade-in">
-                <div class="achievement-icon">
-                    <i class="fas fa-newspaper"></i>
-                </div>
-                <div class="achievement-content">
-                    <h4>Head - TECHNOESIS 2023 Publication Team</h4>
-                    <p>Led partnerships and publicity for the annual technical fest</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="proj">
+    <div class="proj-head">
+      <a class="name" href="https://github.com/chaitanyaPrabhu1/Peer-to-Peer-File-Sharing-Distributed-System">Peer-to-Peer File-Sharing Distributed System</a>
+      <span class="meta">C++17 · 2026</span>
+    </div>
+    <p>
+      A peer-to-peer content-distribution system in C++17 over raw POSIX sockets, with zero
+      external dependencies. A control/data-plane split keeps a two-node tracker cluster holding
+      metadata only, while 512&nbsp;KiB pieces move directly between peers. Trackers stay
+      consistent through idempotent, op-based replication with snapshot bootstrap — converging
+      without consensus or acknowledgements, so a partitioned node self-heals on reconnect.
+      Fail-over is transparent: client RPCs retry onto a surviving tracker with session replay,
+      leaving in-flight transfers undisturbed. A rarest-first scheduler runs over a
+      multi-connection pool with per-piece SHA-1 verify-before-commit; memory stays constant in
+      file size via positional I/O and streaming hashes — a 200&nbsp;MB transfer in roughly
+      7&nbsp;MB RSS. Thread-per-connection with RAII ownership; verified clean under ASan,
+      UBSan, and LeakSanitizer.
+    </p>
+    <p class="stack">C++17 · POSIX sockets · op-based replication · SHA-1</p>
+  </div>
 
-    <footer>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
-        <p>&copy; 2025 Chaitanya Prabhu. All rights reserved.</p>
-    </footer>
+  <div class="proj">
+    <div class="proj-head">
+      <a class="name" href="https://github.com/chaitanyaPrabhu1/Posix-Shell">POSIX Shell</a>
+      <span class="meta">C++17 · 2026</span>
+    </div>
+    <p>
+      An interactive Unix shell built directly on process-management primitives. Implements the
+      core built-ins, input/output redirection, arbitrary-depth pipelines, background job
+      control, and full signal handling, with tab completion and a persistent, navigable command
+      history.
+    </p>
+    <p class="stack">C++17 · fork / exec · pipes · signals</p>
+  </div>
 
-    <script>
-        // Load profile image
-        async function loadProfileImage() {
-            try {
-                const imageData = await window.fs.readFile('profile.jpg');
-                const blob = new Blob([imageData], { type: 'image/jpeg' });
-                const imageUrl = URL.createObjectURL(blob);
-                document.getElementById('profileImage').src = imageUrl;
-            } catch (error) {
-                console.error('Error loading profile image:', error);
-                // Fallback to placeholder if image can't be loaded
-                document.getElementById('profileImage').src = "profile1.png";
-            }
-        }
-        
-        loadProfileImage();
+  <p class="subhead">Security &amp; Cryptography</p>
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+  <div class="proj">
+    <div class="proj-head">
+      <a class="name" href="https://github.com/chaitanyaPrabhu1/Kerberos-Under-Partial-Compromise-using-Schnorr-Multi-Signatures">Kerberos Under Partial Compromise</a>
+      <span class="meta">Python · 2026</span>
+    </div>
+    <p>
+      A Kerberos-inspired authentication system that survives the compromise of any single
+      authority. Tickets are issued under a 2-of-3 Schnorr multi-signature scheme distributed
+      across Authentication and Ticket-Granting servers, each contributing a partial signature
+      that must be threshold-aggregated; tickets are sealed with AES-256-CBC. Ships with attack
+      simulations for key leakage and offline-authority compromise.
+    </p>
+    <p class="stack">Python · Schnorr multi-signatures · AES-256-CBC · threshold cryptography</p>
+  </div>
 
-        // Scroll animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+  <div class="proj">
+    <div class="proj-head">
+      <a class="name" href="https://github.com/chaitanyaPrabhu1/Secure-UAV-Command-and-Control-System-with-Asymmetric-Keys-and-Digital-Signatures">Secure UAV Command &amp; Control System</a>
+      <span class="meta">C++17 · 2026</span>
+    </div>
+    <p>
+      A secure command-and-control link between a Mission Control Center and a fleet of drones.
+      Hand-implemented 2048-bit ElGamal, HMAC-SHA256, and AES-256-CBC provide mutual
+      authentication, session- and group-key establishment, and encrypted fleet-wide command
+      broadcast — handshake under 500&nbsp;ms after key generation.
+    </p>
+    <p class="stack">C++17 · ElGamal 2048-bit · HMAC-SHA256 · AES-256-CBC</p>
+  </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+  <div class="proj">
+    <div class="proj-head">
+      <a class="name" href="https://github.com/chaitanyaPrabhu1/Secure-Multi-Client-Communication-with-Symmetric-Keys">Secure Multi-Client Communication</a>
+      <span class="meta">Python · 2026</span>
+    </div>
+    <p>
+      A stateful, symmetric-key secure-communication protocol between a server and multiple
+      clients, designed to hold up in a hostile network environment.
+    </p>
+    <p class="stack">Python · symmetric-key cryptography · session state</p>
+  </div>
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+  <h2>Experience</h2>
+  <div class="row">
+    <div class="line">
+      <span class="where">Engineer Intern — Deendayal Port Authority</span>
+      <span class="when">May – Nov 2023</span>
+    </div>
+    <span class="what">Gandhidham, Gujarat · On-site</span>
+    <p>
+      Worked on the cargo-logging database for Oil Jetty No.&nbsp;8, which handles liquid-bulk
+      consignments coming off tankers. Kept the records accurate — logging incoming consignments
+      and vessel details as cargo was discharged.
+    </p>
+  </div>
 
-        // Add active state to navigation
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const scrollY = window.pageYOffset;
+  <h2>Education</h2>
+  <div class="row">
+    <div class="line">
+      <span class="where">IIIT Hyderabad</span>
+      <span class="when">2025 – 2027 (expected)</span>
+    </div>
+    <span class="what">M.Tech, Computer Science</span>
+  </div>
+  <div class="row">
+    <div class="line">
+      <span class="where">NIT Silchar</span>
+      <span class="when">2020 – 2024</span>
+    </div>
+    <span class="what">B.Tech, Civil Engineering · GPA 7.40</span>
+  </div>
+  <p class="what" style="font-size:0.9rem;">
+    Coursework: Advanced Operating Systems, Software System Development, Data Structures &amp;
+    Algorithms, System &amp; Network Security.
+  </p>
 
-            sections.forEach(section => {
-                const sectionHeight = section.offsetHeight;
-                const sectionTop = section.offsetTop - 100;
-                const sectionId = section.getAttribute('id');
-                const navLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
+  <h2>Technical Skills</h2>
+  <dl class="skills">
+    <dt>Languages</dt>
+    <dd>C, C++, Python, Java, JavaScript / TypeScript, SQL, Bash</dd>
+    <dt>Backend &amp; Web</dt>
+    <dd>Node.js, FastAPI, Next.js, React, REST, GraphQL</dd>
+    <dt>Infrastructure</dt>
+    <dd>Docker, Kubernetes, AWS, PostgreSQL, Redis, MySQL, MongoDB</dd>
+    <dt>Tools</dt>
+    <dd>Git, GitHub, GitLab, Jira, Confluence, VS Code</dd>
+  </dl>
 
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    navLink?.style.setProperty('opacity', '1');
-                    navLink?.style.setProperty('text-decoration', 'underline');
-                } else {
-                    navLink?.style.removeProperty('text-decoration');
-                }
-            });
-        });
-    </script>
+  <h2>Certification</h2>
+  <ul>
+    <li>SQL (Advanced) — HackerRank · 2023</li>
+  </ul>
+
+  <h2>Honors &amp; Distinctions</h2>
+  <p class="subhead">Examinations</p>
+  <ul>
+    <li>GATE Computer Science &amp; IT 2025 — 59.62 / 100</li>
+    <li>GATE Data Science &amp; AI 2024 — 62.67 / 100</li>
+    <li>PGEE 2025 — 49.75 / 90 (IIIT Hyderabad postgraduate entrance)</li>
+    <li>JEE Main 2020 — 98.28 percentile</li>
+  </ul>
+  <p class="subhead">Distinctions</p>
+  <ul>
+    <li>All-India Inter-NIT Chess — Winner, NIT Silchar (2022)</li>
+    <li>All-India Inter-NIT Football — Runner-up, MNIT Jaipur (2023)</li>
+    <li>Head, Publication Team — Technoesis 2023, the annual technical fest at NIT Silchar</li>
+  </ul>
+
+  <footer>
+    Chaitanya Prabhu · Curriculum Vitæ · Last revised MMXXVI
+  </footer>
+
+</main>
 </body>
 </html>
