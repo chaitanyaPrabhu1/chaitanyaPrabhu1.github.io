@@ -4,100 +4,117 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chaitanya Prabhu — Backend Engineer</title>
-<meta name="description" content="Chaitanya Prabhu — backend engineer. Distributed systems, network programming, and applied cryptography.">
+<meta name="description" content="Chaitanya Prabhu — backend engineer. Distributed systems, APIs, applied cryptography, and the infrastructure behind fast, reliable services.">
 <style>
   :root {
-    --bg:          #f5f5f2;
-    --ink:         #161512;
-    --muted:       #66635b;
-    --faint:       #8d8a80;
-    --rule:        #d6d4cb;
-    --rule-strong: #a6a399;
+    --bg-a:        #d4d5d1;
+    --bg-b:        #bcbdb9;
+    --ink:         #15140f;
+    --muted:       #514f48;
+    --faint:       #615f56;
+    --rule:        #a6a79f;
+    --rule-strong: #84857c;
     --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --serif: Georgia, "Times New Roman", Times, serif;
+    --flower: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240' fill='none' stroke='%238b8c84' stroke-width='1.5'%3E%3Cpath d='M30 235 C65 175 90 150 120 112'/%3E%3Cpath d='M120 112 C145 95 165 80 200 58'/%3E%3Cpath d='M120 112 C100 88 92 66 84 40'/%3E%3Cg transform='translate(120,112)'%3E%3Cellipse cx='0' cy='-17' rx='8' ry='15'/%3E%3Cellipse cx='0' cy='-17' rx='8' ry='15' transform='rotate(72)'/%3E%3Cellipse cx='0' cy='-17' rx='8' ry='15' transform='rotate(144)'/%3E%3Cellipse cx='0' cy='-17' rx='8' ry='15' transform='rotate(216)'/%3E%3Cellipse cx='0' cy='-17' rx='8' ry='15' transform='rotate(288)'/%3E%3Ccircle r='4.5'/%3E%3C/g%3E%3Cg transform='translate(200,58) scale(0.78)'%3E%3Cellipse cx='0' cy='-17' rx='8' ry='15'/%3E%3Cellipse cx='0' cy='-17' rx='8' ry='15' transform='rotate(72)'/%3E%3Cellipse cx='0' cy='-17' rx='8' ry='15' transform='rotate(144)'/%3E%3Cellipse cx='0' cy='-17' rx='8' ry='15' transform='rotate(216)'/%3E%3Cellipse cx='0' cy='-17' rx='8' ry='15' transform='rotate(288)'/%3E%3Ccircle r='4.5'/%3E%3C/g%3E%3Cg transform='translate(84,40)'%3E%3Cellipse cx='0' cy='0' rx='6' ry='11'/%3E%3C/g%3E%3C/svg%3E");
   }
 
   html { -webkit-text-size-adjust: 100%; }
 
   body {
     font-family: var(--serif);
-    font-size: 17.5px;
+    font-size: 17px;
     line-height: 1.6;
     color: var(--ink);
-    background: var(--bg);
+    background: linear-gradient(155deg, var(--bg-a) 0%, var(--bg-b) 100%);
+    background-attachment: fixed;
     margin: 0;
-    padding: 3.6rem 1.4rem 4.5rem;
+    padding: 2.6rem 2.6rem 4rem;
   }
 
-  main { max-width: 43rem; margin: 0 auto; }
-
-  a {
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--rule-strong);
+  /* minimal flowers framing the corners, behind everything */
+  body::before, body::after {
+    content: "";
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: var(--flower) no-repeat;
+    background-size: contain;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
   }
+  body::before { left: -26px; bottom: -26px; }
+  body::after  { right: -26px; top: -26px; transform: rotate(180deg); }
+
+  .page { position: relative; z-index: 1; max-width: 76rem; margin: 0 auto; }
+
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule-strong); }
   a:hover { border-bottom-color: var(--ink); }
 
-  /* ---------- Letterhead ---------- */
+  /* ---------- Header ---------- */
   header {
     overflow: hidden;
-    padding-bottom: 1.1rem;
-    border-bottom: 1px solid var(--ink);
-    margin-bottom: 2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 2.2rem;
   }
-
   .photo {
     float: right;
-    width: 104px;
-    height: 104px;
+    width: 112px;
+    height: 112px;
     object-fit: cover;
-    margin: 0.1rem 0 0.6rem 1.5rem;
+    margin: 0.1rem 0 0.6rem 1.6rem;
     border: 1px solid var(--rule-strong);
     filter: grayscale(100%);
   }
-
-  .avail {
-    font-family: var(--sans);
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin: 1rem 0 0;
-    padding-top: 0.85rem;
-    border-top: 1px solid var(--rule);
-  }
-
   h1 {
     font-family: var(--sans);
-    font-size: 2.05rem;
+    font-size: 2.3rem;
     font-weight: 600;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     line-height: 1.08;
     margin: 0 0 0.4rem;
   }
-
   .title {
     font-family: var(--sans);
-    font-size: 0.74rem;
+    font-size: 0.76rem;
     font-weight: 500;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.26em;
     text-transform: uppercase;
     color: var(--muted);
     margin: 0 0 1rem;
   }
-
   .contact {
     font-family: var(--sans);
     font-size: 0.78rem;
     letter-spacing: 0.02em;
-    color: var(--ink);
     margin: 0;
   }
   .contact a { border-bottom: none; }
   .contact a:hover { border-bottom: 1px solid var(--ink); }
   .sep { color: var(--faint); margin: 0 0.45rem; }
+  .avail {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 1rem 0 0;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ---------- Two-column body ---------- */
+  .cols {
+    display: grid;
+    grid-template-columns: 1.62fr 1fr;
+    gap: 0 3rem;
+    align-items: start;
+  }
+  .cols > * > h2:first-child { margin-top: 0; }
 
   /* ---------- Sections ---------- */
   h2 {
@@ -107,11 +124,10 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--ink);
-    margin: 2.6rem 0 1rem;
+    margin: 2.4rem 0 1rem;
     padding-bottom: 0.4rem;
     border-bottom: 1px solid var(--rule);
   }
-
   .subhead {
     font-family: var(--sans);
     font-size: 0.66rem;
@@ -121,13 +137,8 @@
     color: var(--muted);
     margin: 1.5rem 0 0.7rem;
   }
-
   p { margin: 0 0 1rem; }
   .lede { font-size: 1.02rem; }
-
-  ul { list-style: none; padding-left: 0; margin: 0 0 1rem; }
-  li { position: relative; padding-left: 1.2rem; margin-bottom: 0.45rem; }
-  li::before { content: "—"; position: absolute; left: 0; color: var(--faint); }
 
   /* ---------- Projects ---------- */
   .proj { margin: 0 0 1.4rem; }
@@ -138,12 +149,7 @@
     gap: 1rem;
     margin: 0 0 0.25rem;
   }
-  .proj-head .name {
-    font-family: var(--sans);
-    font-weight: 700;
-    font-size: 0.95rem;
-    letter-spacing: 0.01em;
-  }
+  .proj-head .name { font-family: var(--sans); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.01em; }
   .proj-head .meta {
     font-family: var(--sans);
     font-size: 0.64rem;
@@ -152,7 +158,7 @@
     color: var(--faint);
     white-space: nowrap;
   }
-  .proj p { font-size: 0.95rem; margin: 0.1rem 0 0.45rem; color: #2b2922; }
+  .proj p { font-size: 0.95rem; margin: 0.1rem 0 0.45rem; color: #2a2820; }
   .stack {
     font-family: var(--sans);
     font-size: 0.64rem;
@@ -168,18 +174,14 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: 1rem;
+    gap: 0.6rem;
+    flex-wrap: wrap;
   }
-  .row .where {
-    font-family: var(--sans);
-    font-weight: 700;
-    font-size: 0.92rem;
-    letter-spacing: 0.01em;
-  }
+  .row .where { font-family: var(--sans); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.01em; }
   .row .when {
     font-family: var(--sans);
     font-size: 0.66rem;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--faint);
     white-space: nowrap;
@@ -187,13 +189,8 @@
   .row .what { color: var(--muted); }
   .row p { margin: 0.35rem 0 0; font-size: 0.95rem; }
 
-  /* ---------- Skills matrix ---------- */
-  dl.skills {
-    display: grid;
-    grid-template-columns: 9rem 1fr;
-    gap: 0.2rem 1.4rem;
-    margin: 0;
-  }
+  /* ---------- Skills (sidebar, stacked) ---------- */
+  dl.skills { margin: 0; }
   dl.skills dt {
     font-family: var(--sans);
     font-size: 0.66rem;
@@ -201,36 +198,48 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--muted);
-    padding-top: 0.18rem;
+    margin-top: 0.9rem;
   }
-  dl.skills dd { margin: 0; }
+  dl.skills dt:first-child { margin-top: 0; }
+  dl.skills dd { margin: 0.12rem 0 0; font-size: 0.93rem; }
+
+  /* ---------- Lists ---------- */
+  ul { list-style: none; padding-left: 0; margin: 0 0 1rem; }
+  li { position: relative; padding-left: 1.2rem; margin-bottom: 0.45rem; font-size: 0.95rem; }
+  li::before { content: "—"; position: absolute; left: 0; color: var(--faint); }
 
   /* ---------- Footer ---------- */
   footer {
+    clear: both;
     font-family: var(--sans);
     font-size: 0.72rem;
     letter-spacing: 0.03em;
     color: var(--faint);
     border-top: 1px solid var(--rule);
-    margin-top: 3rem;
+    margin-top: 2.6rem;
     padding-top: 1.1rem;
   }
   footer a { border-bottom: none; color: var(--muted); }
   footer a:hover { border-bottom: 1px solid var(--ink); color: var(--ink); }
   footer .foot-copy { display: block; margin-top: 0.45rem; letter-spacing: 0.02em; }
 
-  @media (max-width: 540px) {
-    body { font-size: 16.5px; padding: 2rem 1.1rem 3rem; }
-    h1 { font-size: 1.7rem; letter-spacing: 0.1em; }
+  /* ---------- Responsive ---------- */
+  @media (max-width: 760px) {
+    body { padding: 1.8rem 1.2rem 3rem; font-size: 16.5px; }
+    body::before, body::after { width: 165px; height: 165px; opacity: 0.4; }
+    .cols { grid-template-columns: 1fr; gap: 0; }
+    .cols .side { margin-top: 1.4rem; }
+    h1 { font-size: 1.8rem; letter-spacing: 0.1em; }
     .photo { float: none; display: block; margin: 0 0 1rem; }
-    dl.skills { grid-template-columns: 1fr; gap: 0.05rem; }
-    dl.skills dt { margin-top: 0.7rem; }
     .proj-head { flex-direction: column; gap: 0.1rem; }
   }
 
   @media print {
     body { background: #fff; color: #000; padding: 0; font-size: 11pt; }
-    main { max-width: none; margin: 0; }
+    body::before, body::after { display: none; }
+    .page { max-width: none; }
+    .cols { display: block; }
+    .cols .side { margin-top: 1.6rem; }
     a { color: #000; border-bottom: none; }
     header { border-color: #000; }
     .avail { border-color: #000; color: #000; }
@@ -241,10 +250,10 @@
 </style>
 </head>
 <body>
-<main>
+<div class="page">
 
   <header>
-    <img class="photo" src="profile1.png" alt="Chaitanya Prabhu" width="104" height="104">
+    <img class="photo" src="profile1.png" alt="Chaitanya Prabhu" width="112" height="112">
     <h1>Chaitanya Prabhu</h1>
     <p class="title">Backend Engineer</p>
     <p class="contact">
@@ -256,163 +265,177 @@
     <p class="avail">Available for full-time backend &amp; systems engineering roles</p>
   </header>
 
-  <h2>Profile</h2>
-  <p class="lede">
-    Backend engineer. I build high-performance, fault-tolerant services and the systems beneath
-    them — from the language runtime down to the bytes on the wire. Dropped out of IIIT Hyderabad.
-    My work, in C++ and Python, centers on distributed systems, network programming, and applied
-    cryptography.
-  </p>
+  <div class="cols">
 
-  <h2>Technical Skills</h2>
-  <dl class="skills">
-    <dt>Languages</dt>
-    <dd>C, C++, Python, Java, JavaScript / TypeScript, SQL, Bash</dd>
-    <dt>Backend &amp; Web</dt>
-    <dd>Node.js, FastAPI, Next.js, React, REST, GraphQL</dd>
-    <dt>Infrastructure</dt>
-    <dd>Docker, Kubernetes, AWS, PostgreSQL, Redis, MySQL, MongoDB</dd>
-    <dt>Tools</dt>
-    <dd>Git, GitHub, GitLab, Jira, Confluence, VS Code</dd>
-    <dt>Focus</dt>
-    <dd>Distributed systems, performance engineering, applied cryptography, microservices, RAG / LLM pipelines</dd>
-  </dl>
+    <section class="main">
 
-  <h2>Selected Projects</h2>
+      <h2>Profile</h2>
+      <p class="lede">
+        Backend engineer. I build high-performance, fault-tolerant services and the systems
+        beneath them — from the language runtime down to the bytes on the wire. Dropped out of
+        IIIT Hyderabad. My work, in C++ and Python, centers on distributed systems, network
+        programming, applied cryptography, and the backend services that tie them together —
+        REST and GraphQL APIs, microservices, and the databases, caching, and containerized
+        infrastructure that keep them fast and reliable.
+      </p>
 
-  <p class="subhead">Systems &amp; Networking</p>
+      <h2>Selected Projects</h2>
 
-  <div class="proj">
-    <div class="proj-head">
-      <a class="name" href="https://github.com/chaitanyaPrabhu1/Peer-to-Peer-File-Sharing-Distributed-System">Peer-to-Peer File-Sharing Distributed System</a>
-      <span class="meta">C++17 · 2026</span>
-    </div>
-    <p>
-      A peer-to-peer content-distribution system in C++17 over raw POSIX sockets, with zero
-      external dependencies. A control/data-plane split keeps a two-node tracker cluster holding
-      metadata only, while 512&nbsp;KiB pieces move directly between peers. Trackers stay
-      consistent through idempotent, op-based replication with snapshot bootstrap — converging
-      without consensus or acknowledgements, so a partitioned node self-heals on reconnect.
-      Fail-over is transparent: client RPCs retry onto a surviving tracker with session replay,
-      leaving in-flight transfers undisturbed. A rarest-first scheduler runs over a
-      multi-connection pool with per-piece SHA-1 verify-before-commit; memory stays constant in
-      file size via positional I/O and streaming hashes — a 200&nbsp;MB transfer in roughly
-      7&nbsp;MB RSS. Thread-per-connection with RAII ownership; verified clean under ASan,
-      UBSan, and LeakSanitizer.
-    </p>
-    <p class="stack">C++17 · POSIX sockets · op-based replication · SHA-1</p>
+      <p class="subhead">Systems &amp; Networking</p>
+
+      <div class="proj">
+        <div class="proj-head">
+          <a class="name" href="https://github.com/chaitanyaPrabhu1/Peer-to-Peer-File-Sharing-Distributed-System">Peer-to-Peer File-Sharing Distributed System</a>
+          <span class="meta">C++17 · 2026</span>
+        </div>
+        <p>
+          A peer-to-peer content-distribution system in C++17 over raw POSIX sockets, with zero
+          external dependencies. A control/data-plane split keeps a two-node tracker cluster
+          holding metadata only, while 512&nbsp;KiB pieces move directly between peers. Trackers
+          stay consistent through idempotent, op-based replication with snapshot bootstrap —
+          converging without consensus or acknowledgements, so a partitioned node self-heals on
+          reconnect. Fail-over is transparent: client RPCs retry onto a surviving tracker with
+          session replay, leaving in-flight transfers undisturbed. A rarest-first scheduler runs
+          over a multi-connection pool with per-piece SHA-1 verify-before-commit; memory stays
+          constant in file size via positional I/O and streaming hashes — a 200&nbsp;MB transfer
+          in roughly 7&nbsp;MB RSS. Thread-per-connection with RAII ownership; verified clean
+          under ASan, UBSan, and LeakSanitizer.
+        </p>
+        <p class="stack">C++17 · POSIX sockets · op-based replication · SHA-1</p>
+      </div>
+
+      <div class="proj">
+        <div class="proj-head">
+          <a class="name" href="https://github.com/chaitanyaPrabhu1/Posix-Shell">POSIX Shell</a>
+          <span class="meta">C++17 · 2026</span>
+        </div>
+        <p>
+          An interactive Unix shell built directly on process-management primitives. Implements
+          the core built-ins, input/output redirection, arbitrary-depth pipelines, background job
+          control, and full signal handling, with tab completion and a persistent, navigable
+          command history.
+        </p>
+        <p class="stack">C++17 · fork / exec · pipes · signals</p>
+      </div>
+
+      <p class="subhead">Security &amp; Cryptography</p>
+
+      <div class="proj">
+        <div class="proj-head">
+          <a class="name" href="https://github.com/chaitanyaPrabhu1/Kerberos-Under-Partial-Compromise-using-Schnorr-Multi-Signatures">Kerberos Under Partial Compromise</a>
+          <span class="meta">Python · 2026</span>
+        </div>
+        <p>
+          A Kerberos-inspired authentication system that survives the compromise of any single
+          authority. Tickets are issued under a 2-of-3 Schnorr multi-signature scheme distributed
+          across Authentication and Ticket-Granting servers, each contributing a partial
+          signature that must be threshold-aggregated; tickets are sealed with AES-256-CBC. Ships
+          with attack simulations for key leakage and offline-authority compromise.
+        </p>
+        <p class="stack">Python · Schnorr multi-signatures · AES-256-CBC · threshold cryptography</p>
+      </div>
+
+      <div class="proj">
+        <div class="proj-head">
+          <a class="name" href="https://github.com/chaitanyaPrabhu1/Secure-UAV-Command-and-Control-System-with-Asymmetric-Keys-and-Digital-Signatures">Secure UAV Command &amp; Control System</a>
+          <span class="meta">C++17 · 2026</span>
+        </div>
+        <p>
+          A secure command-and-control link between a Mission Control Center and a fleet of
+          drones. Hand-implemented 2048-bit ElGamal, HMAC-SHA256, and AES-256-CBC provide mutual
+          authentication, session- and group-key establishment, and encrypted fleet-wide command
+          broadcast — handshake under 500&nbsp;ms after key generation.
+        </p>
+        <p class="stack">C++17 · ElGamal 2048-bit · HMAC-SHA256 · AES-256-CBC</p>
+      </div>
+
+      <div class="proj">
+        <div class="proj-head">
+          <a class="name" href="https://github.com/chaitanyaPrabhu1/Secure-Multi-Client-Communication-with-Symmetric-Keys">Secure Multi-Client Communication</a>
+          <span class="meta">Python · 2026</span>
+        </div>
+        <p>
+          A stateful, symmetric-key secure-communication protocol between a server and multiple
+          clients, designed to hold up in a hostile network environment.
+        </p>
+        <p class="stack">Python · symmetric-key cryptography · session state</p>
+      </div>
+
+      <h2>Experience</h2>
+      <div class="row">
+        <div class="line">
+          <span class="where">Engineer Intern — Deendayal Port Authority</span>
+          <span class="when">May – Nov 2023</span>
+        </div>
+        <span class="what">Gandhidham, Gujarat · On-site</span>
+        <p>
+          Worked on the cargo-logging database for Oil Jetty No.&nbsp;8, which handles liquid-bulk
+          consignments coming off tankers. Kept the records accurate — logging incoming
+          consignments and vessel details as cargo was discharged.
+        </p>
+      </div>
+
+    </section>
+
+    <aside class="side">
+
+      <h2>Technical Skills</h2>
+      <dl class="skills">
+        <dt>Languages</dt>
+        <dd>C, C++, Python, Java, JavaScript / TypeScript, SQL, Bash</dd>
+        <dt>Backend &amp; Web</dt>
+        <dd>Node.js, FastAPI, Next.js, React, REST, GraphQL</dd>
+        <dt>Infrastructure</dt>
+        <dd>Docker, Kubernetes, AWS, PostgreSQL, Redis, MySQL, MongoDB</dd>
+        <dt>Tools</dt>
+        <dd>Git, GitHub, GitLab, Jira, Confluence, VS Code</dd>
+        <dt>Focus</dt>
+        <dd>Distributed systems, performance engineering, applied cryptography, microservices, RAG / LLM pipelines</dd>
+      </dl>
+
+      <h2>Education</h2>
+      <div class="row">
+        <div class="line">
+          <span class="where">IIIT Hyderabad</span>
+          <span class="when">2025 – 2026</span>
+        </div>
+        <span class="what">M.Tech, Computer Science — withdrew</span>
+      </div>
+      <div class="row">
+        <div class="line">
+          <span class="where">NIT Silchar</span>
+          <span class="when">2020 – 2024</span>
+        </div>
+        <span class="what">B.Tech, Civil Engineering · GPA 7.40</span>
+      </div>
+      <p class="what" style="font-size:0.88rem;">
+        Coursework: Advanced Operating Systems, Software System Development, Data Structures &amp;
+        Algorithms, System &amp; Network Security.
+      </p>
+
+      <h2>Certification</h2>
+      <ul>
+        <li>SQL (Advanced) — HackerRank · 2023</li>
+      </ul>
+
+      <h2>Honors &amp; Distinctions</h2>
+      <p class="subhead">Examinations</p>
+      <ul>
+        <li>GATE Computer Science &amp; IT 2025 — 59.62 / 100</li>
+        <li>GATE Data Science &amp; AI 2024 — 62.67 / 100</li>
+        <li>PGEE 2025 — 49.75 / 90 (IIIT Hyderabad entrance)</li>
+        <li>JEE Main 2020 — 98.28 percentile</li>
+      </ul>
+      <p class="subhead">Distinctions</p>
+      <ul>
+        <li>All-India Inter-NIT Chess — Winner, NIT Silchar (2022)</li>
+        <li>All-India Inter-NIT Football — Runner-up, MNIT Jaipur (2023)</li>
+        <li>Head, Publication Team — Technoesis 2023, NIT Silchar</li>
+      </ul>
+
+    </aside>
+
   </div>
-
-  <div class="proj">
-    <div class="proj-head">
-      <a class="name" href="https://github.com/chaitanyaPrabhu1/Posix-Shell">POSIX Shell</a>
-      <span class="meta">C++17 · 2026</span>
-    </div>
-    <p>
-      An interactive Unix shell built directly on process-management primitives. Implements the
-      core built-ins, input/output redirection, arbitrary-depth pipelines, background job
-      control, and full signal handling, with tab completion and a persistent, navigable command
-      history.
-    </p>
-    <p class="stack">C++17 · fork / exec · pipes · signals</p>
-  </div>
-
-  <p class="subhead">Security &amp; Cryptography</p>
-
-  <div class="proj">
-    <div class="proj-head">
-      <a class="name" href="https://github.com/chaitanyaPrabhu1/Kerberos-Under-Partial-Compromise-using-Schnorr-Multi-Signatures">Kerberos Under Partial Compromise</a>
-      <span class="meta">Python · 2026</span>
-    </div>
-    <p>
-      A Kerberos-inspired authentication system that survives the compromise of any single
-      authority. Tickets are issued under a 2-of-3 Schnorr multi-signature scheme distributed
-      across Authentication and Ticket-Granting servers, each contributing a partial signature
-      that must be threshold-aggregated; tickets are sealed with AES-256-CBC. Ships with attack
-      simulations for key leakage and offline-authority compromise.
-    </p>
-    <p class="stack">Python · Schnorr multi-signatures · AES-256-CBC · threshold cryptography</p>
-  </div>
-
-  <div class="proj">
-    <div class="proj-head">
-      <a class="name" href="https://github.com/chaitanyaPrabhu1/Secure-UAV-Command-and-Control-System-with-Asymmetric-Keys-and-Digital-Signatures">Secure UAV Command &amp; Control System</a>
-      <span class="meta">C++17 · 2026</span>
-    </div>
-    <p>
-      A secure command-and-control link between a Mission Control Center and a fleet of drones.
-      Hand-implemented 2048-bit ElGamal, HMAC-SHA256, and AES-256-CBC provide mutual
-      authentication, session- and group-key establishment, and encrypted fleet-wide command
-      broadcast — handshake under 500&nbsp;ms after key generation.
-    </p>
-    <p class="stack">C++17 · ElGamal 2048-bit · HMAC-SHA256 · AES-256-CBC</p>
-  </div>
-
-  <div class="proj">
-    <div class="proj-head">
-      <a class="name" href="https://github.com/chaitanyaPrabhu1/Secure-Multi-Client-Communication-with-Symmetric-Keys">Secure Multi-Client Communication</a>
-      <span class="meta">Python · 2026</span>
-    </div>
-    <p>
-      A stateful, symmetric-key secure-communication protocol between a server and multiple
-      clients, designed to hold up in a hostile network environment.
-    </p>
-    <p class="stack">Python · symmetric-key cryptography · session state</p>
-  </div>
-
-  <h2>Experience</h2>
-  <div class="row">
-    <div class="line">
-      <span class="where">Engineer Intern — Deendayal Port Authority</span>
-      <span class="when">May – Nov 2023</span>
-    </div>
-    <span class="what">Gandhidham, Gujarat · On-site</span>
-    <p>
-      Worked on the cargo-logging database for Oil Jetty No.&nbsp;8, which handles liquid-bulk
-      consignments coming off tankers. Kept the records accurate — logging incoming consignments
-      and vessel details as cargo was discharged.
-    </p>
-  </div>
-
-  <h2>Education</h2>
-  <div class="row">
-    <div class="line">
-      <span class="where">IIIT Hyderabad</span>
-      <span class="when">2025 – 2026</span>
-    </div>
-    <span class="what">M.Tech, Computer Science — withdrew</span>
-  </div>
-  <div class="row">
-    <div class="line">
-      <span class="where">NIT Silchar</span>
-      <span class="when">2020 – 2024</span>
-    </div>
-    <span class="what">B.Tech, Civil Engineering · GPA 7.40</span>
-  </div>
-  <p class="what" style="font-size:0.9rem;">
-    Coursework: Advanced Operating Systems, Software System Development, Data Structures &amp;
-    Algorithms, System &amp; Network Security.
-  </p>
-
-  <h2>Certification</h2>
-  <ul>
-    <li>SQL (Advanced) — HackerRank · 2023</li>
-  </ul>
-
-  <h2>Honors &amp; Distinctions</h2>
-  <p class="subhead">Examinations</p>
-  <ul>
-    <li>GATE Computer Science &amp; IT 2025 — 59.62 / 100</li>
-    <li>GATE Data Science &amp; AI 2024 — 62.67 / 100</li>
-    <li>PGEE 2025 — 49.75 / 90 (IIIT Hyderabad postgraduate entrance)</li>
-    <li>JEE Main 2020 — 98.28 percentile</li>
-  </ul>
-  <p class="subhead">Distinctions</p>
-  <ul>
-    <li>All-India Inter-NIT Chess — Winner, NIT Silchar (2022)</li>
-    <li>All-India Inter-NIT Football — Runner-up, MNIT Jaipur (2023)</li>
-    <li>Head, Publication Team — Technoesis 2023, the annual technical fest at NIT Silchar</li>
-  </ul>
 
   <footer>
     <a href="mailto:chaitanyasprabhu@gmail.com">chaitanyasprabhu@gmail.com</a><span class="sep">·</span>
@@ -421,6 +444,6 @@
     <span class="foot-copy">© 2026 Chaitanya Prabhu · New Delhi, India</span>
   </footer>
 
-</main>
+</div>
 </body>
 </html>
