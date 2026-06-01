@@ -7,12 +7,13 @@
 <meta name="description" content="Chaitanya Prabhu — backend engineer. Distributed systems, network programming, and applied cryptography.">
 <style>
   :root {
-    --paper:       #efece4;   /* bone */
-    --ink:         #1b1a16;
-    --muted:       #6c675c;
-    --faint:       #918b7e;
-    --rule:        #d2cdc0;
-    --rule-strong: #a39d8f;
+    --desk:        #e6e6e1;   /* the surface the card rests on */
+    --card:        #f7f7f4;   /* Pale Nimbus — subtle off-white */
+    --ink:         #1a1a17;
+    --muted:       #6a675f;
+    --faint:       #8f8c82;
+    --rule:        #dbd9d1;
+    --rule-strong: #aaa79c;
     --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --serif: Georgia, "Times New Roman", Times, serif;
   }
@@ -24,12 +25,25 @@
     font-size: 17.5px;
     line-height: 1.6;
     color: var(--ink);
-    background: var(--paper);
+    background: var(--desk);
     margin: 0;
-    padding: 3.2rem 1.25rem 4rem;
+    padding: 3.4rem 1.25rem 4.5rem;
   }
 
-  main { max-width: 43rem; margin: 0 auto; }
+  main {
+    max-width: 43rem;
+    margin: 0 auto;
+    background-color: var(--card);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520'%3E%3Ctext x='50%25' y='50%25' font-family='Georgia, serif' font-size='300' font-weight='700' fill='%231a1a17' fill-opacity='0.05' text-anchor='middle' dominant-baseline='central'%3ECP%3C/text%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center 40%;
+    border: 1px solid #e2e1db;
+    padding: 3.6rem 3.1rem;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.03),
+      0 1px 2px rgba(0, 0, 0, 0.05),
+      0 28px 60px -32px rgba(0, 0, 0, 0.42);
+  }
 
   a {
     color: var(--ink);
@@ -215,7 +229,8 @@
   }
 
   @media (max-width: 540px) {
-    body { font-size: 16.5px; padding-top: 2.2rem; }
+    body { font-size: 16.5px; padding: 1.4rem 0.9rem 2.4rem; }
+    main { padding: 2.1rem 1.45rem; }
     h1 { font-size: 1.7rem; letter-spacing: 0.1em; }
     .photo { float: none; display: block; margin: 0 0 1rem; }
     dl.skills { grid-template-columns: 1fr; gap: 0.05rem; }
@@ -243,11 +258,9 @@
   <h2>Profile</h2>
   <p class="lede">
     Backend engineer. I build high-performance, fault-tolerant services and the systems beneath
-    them — from the language runtime down to the bytes on the wire. I read Civil Engineering at
-    <a href="https://www.nits.ac.in/">NIT Silchar</a>, then joined the M.Tech in Computer Science
-    at <a href="https://www.iiit.ac.in/">IIIT Hyderabad</a>, which I have since left to build
-    software full-time. My work, in C++ and Python, centers on distributed systems, network
-    programming, and applied cryptography.
+    them — from the language runtime down to the bytes on the wire. Dropped out of IIIT Hyderabad.
+    My work, in C++ and Python, centers on distributed systems, network programming, and applied
+    cryptography.
   </p>
 
   <h2>Focus</h2>
