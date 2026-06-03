@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chaitanya Prabhu — Résumé</title>
+<meta name="description" content="Chaitanya Prabhu — Backend Engineer. Résumé.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:   #17160f;
+    --muted: #4b493f;
+    --faint: #6c6a5f;
+    --rule:  #c2c2b8;
+    --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: var(--serif);
+    color: var(--ink);
+    background: #e7e7e3;
+    margin: 0;
+    padding: 18px;
+    -webkit-text-size-adjust: 100%;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    padding: 15mm 16mm 14mm;
+    box-shadow: 0 10px 44px -16px rgba(0,0,0,0.45);
+    font-size: 10.2pt;
+    line-height: 1.42;
+  }
+
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ink); }
+
+  /* Header */
+  .name {
+    font-family: var(--sans);
+    font-size: 21pt;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.04;
+  }
+  .role {
+    font-family: var(--sans);
+    font-size: 8.4pt;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0.34rem 0 0.5rem;
+  }
+  .contact {
+    font-family: var(--sans);
+    font-size: 8.6pt;
+    font-weight: 400;
+    margin: 0;
+    padding-bottom: 0.7rem;
+    border-bottom: 2px solid var(--ink);
+  }
+  .contact a { border-bottom: none; }
+  .contact a:hover { border-bottom: 1px solid var(--ink); }
+  .sep { color: var(--faint); margin: 0 0.4rem; }
+
+  /* Sections */
+  h2 {
+    font-family: var(--sans);
+    font-size: 8.6pt;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 1.15rem 0 0.5rem;
+    padding-bottom: 0.16rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  p { margin: 0 0 0.5rem; }
+  .summary { margin: 0.7rem 0 0; }
+
+  /* Skills */
+  .skills { margin: 0; }
+  .skills .row { display: flex; gap: 0.7rem; margin-bottom: 0.16rem; }
+  .skills .k {
+    font-family: var(--sans);
+    font-size: 7.8pt;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex: 0 0 27mm;
+    padding-top: 1.5pt;
+  }
+  .skills .v { flex: 1; }
+
+  /* Entries */
+  .entry { margin-bottom: 0.66rem; page-break-inside: avoid; }
+  .entry .head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .entry .t { font-family: var(--sans); font-weight: 600; font-size: 9.8pt; }
+  .entry .t a { border-bottom: none; }
+  .entry .t a:hover { border-bottom: 1px solid var(--ink); }
+  .entry .meta {
+    font-family: var(--sans);
+    font-size: 7.6pt;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--faint);
+    white-space: nowrap;
+  }
+  .entry .sub { font-style: italic; color: var(--muted); font-size: 9.6pt; }
+
+  .subhead {
+    font-family: var(--sans);
+    font-size: 7.4pt;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0.7rem 0 0.4rem;
+  }
+
+  ul { margin: 0.2rem 0 0; padding-left: 0; list-style: none; }
+  li { position: relative; padding-left: 3.8mm; margin-bottom: 0.16rem; }
+  li::before { content: "▪"; position: absolute; left: 0; font-size: 6pt; top: 2.6pt; color: var(--faint); }
+  .stack {
+    font-family: var(--sans);
+    font-size: 7.3pt;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0.16rem 0 0;
+    padding-left: 3.8mm;
+  }
+
+  @media (max-width: 640px) {
+    body { padding: 0; }
+    .sheet { width: 100%; min-height: 0; padding: 9mm 7mm; box-shadow: none; font-size: 10.5pt; }
+    .skills .row { flex-direction: column; gap: 0; }
+    .skills .k { flex-basis: auto; padding-top: 0; margin-top: 0.3rem; }
+  }
+
+  @media print {
+    @page { size: A4; margin: 14mm; }
+    body { background: #fff; padding: 0; }
+    .sheet { width: auto; min-height: 0; padding: 0; box-shadow: none; font-size: 10pt; }
+    a { border-bottom: none; }
+    .entry, h2 { page-break-inside: avoid; }
+    h2 { page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <p class="name">Chaitanya Prabhu</p>
+  <p class="role">Backend Engineer</p>
+  <p class="contact">
+    <a href="mailto:chaitanyasprabhu@gmail.com">chaitanyasprabhu@gmail.com</a><span class="sep">·</span>
+    <a href="https://github.com/chaitanyaPrabhu1">github.com/chaitanyaPrabhu1</a><span class="sep">·</span>
+    <a href="https://www.linkedin.com/in/chaitanya-p-82a534312/">linkedin.com/in/chaitanya-p</a><span class="sep">·</span>
+    New Delhi, India
+  </p>
+
+  <p class="summary">
+    Backend engineer building high-performance, fault-tolerant services and the systems beneath
+    them — from the language runtime down to the bytes on the wire. Core in C++ for the
+    performance-critical paths and JavaScript/TypeScript for the services around them; data layers
+    in SQL and Redis, containerized with Docker and orchestrated on Kubernetes across AWS. Focused
+    on distributed systems, network programming, and the reliability problems — backpressure,
+    failover, consistency — that decide whether a system holds up under load.
+  </p>
+
+  <h2>Technical Skills</h2>
+  <div class="skills">
+    <div class="row"><span class="k">Languages</span><span class="v">C, C++, Python, Java, JavaScript / TypeScript, SQL, Bash</span></div>
+    <div class="row"><span class="k">Backend &amp; Web</span><span class="v">Node.js, FastAPI, Next.js, React, REST, GraphQL</span></div>
+    <div class="row"><span class="k">Infrastructure</span><span class="v">Docker, Kubernetes, AWS, PostgreSQL, Redis, MySQL, MongoDB</span></div>
+    <div class="row"><span class="k">Focus</span><span class="v">Distributed systems, performance engineering, applied cryptography, microservices, RAG / LLM pipelines</span></div>
+  </div>
+
+  <h2>Education</h2>
+  <div class="entry">
+    <div class="head">
+      <span class="t">IIIT Hyderabad — M.Tech, Computer Science <span style="font-weight:400;font-style:italic;">(withdrew)</span></span>
+      <span class="meta">2025 – 2026</span>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="head">
+      <span class="t">NIT Silchar — B.Tech, Civil Engineering · GPA 7.40</span>
+      <span class="meta">2020 – 2024</span>
+    </div>
+    <div class="sub" style="font-style:normal;">Coursework: Advanced Operating Systems, Software System Development, Data Structures &amp; Algorithms, System &amp; Network Security.</div>
+  </div>
+
+  <h2>Personal Projects</h2>
+
+  <p class="subhead">Systems &amp; Networking</p>
+
+  <div class="entry">
+    <div class="head">
+      <span class="t"><a href="https://github.com/chaitanyaPrabhu1/Peer-to-Peer-File-Sharing-Distributed-System">Peer-to-Peer File-Sharing Distributed System</a></span>
+      <span class="meta">C++17 · 2026</span>
+    </div>
+    <ul>
+      <li>BitTorrent-style content distribution on raw POSIX sockets with zero dependencies; control/data-plane split keeps a 2-node tracker cluster holding metadata only while 512 KiB pieces move peer-to-peer, with idempotent op-based replication and transparent fail-over via RPC retry and session replay.</li>
+      <li>Rarest-first scheduling with per-piece SHA-1 verify-before-commit; O(1)-in-file-size memory via positional I/O and streaming hashes — 200 MB transfer in ~7 MB RSS. Verified clean under ASan / UBSan / LeakSanitizer.</li>
+    </ul>
+    <p class="stack">C++17 · POSIX sockets · op-based replication · SHA-1</p>
+  </div>
+
+  <div class="entry">
+    <div class="head">
+      <span class="t"><a href="https://github.com/chaitanyaPrabhu1/Posix-Shell">POSIX Shell</a></span>
+      <span class="meta">C++17 · 2026</span>
+    </div>
+    <ul>
+      <li>Interactive Unix shell built directly on process-management primitives: built-ins, I/O redirection, arbitrary-depth pipelines, background job control, full signal handling, tab completion, and persistent history.</li>
+    </ul>
+    <p class="stack">C++17 · fork / exec · pipes · signals</p>
+  </div>
+
+  <p class="subhead">Security &amp; Cryptography</p>
+
+  <div class="entry">
+    <div class="head">
+      <span class="t"><a href="https://github.com/chaitanyaPrabhu1/Kerberos-Under-Partial-Compromise-using-Schnorr-Multi-Signatures">Kerberos Under Partial Compromise</a></span>
+      <span class="meta">Python · 2026</span>
+    </div>
+    <ul>
+      <li>Kerberos-inspired authentication resilient to single-authority compromise via a 2-of-3 Schnorr multi-signature across distributed Authentication / Ticket-Granting servers; AES-256-CBC tickets; ships attack simulations for key leakage and offline-authority compromise.</li>
+    </ul>
+    <p class="stack">Python · Schnorr multi-signatures · AES-256-CBC · threshold cryptography</p>
+  </div>
+
+  <div class="entry">
+    <div class="head">
+      <span class="t"><a href="https://github.com/chaitanyaPrabhu1/Secure-UAV-Command-and-Control-System-with-Asymmetric-Keys-and-Digital-Signatures">Secure UAV Command &amp; Control System</a></span>
+      <span class="meta">C++17 · 2026</span>
+    </div>
+    <ul>
+      <li>Encrypted command-and-control between a Mission Control Center and a drone fleet; hand-implemented 2048-bit ElGamal, HMAC-SHA256, and AES-256-CBC for mutual authentication, session- and group-key establishment, and fleet-wide broadcast — sub-500 ms handshake.</li>
+    </ul>
+    <p class="stack">C++17 · ElGamal 2048-bit · HMAC-SHA256 · AES-256-CBC</p>
+  </div>
+
+  <div class="entry">
+    <div class="head">
+      <span class="t"><a href="https://github.com/chaitanyaPrabhu1/Secure-Multi-Client-Communication-with-Symmetric-Keys">Secure Multi-Client Communication</a></span>
+      <span class="meta">Python · 2026</span>
+    </div>
+    <ul>
+      <li>Stateful, symmetric-key secure-communication protocol between a server and multiple clients, designed to hold up in a hostile network environment.</li>
+    </ul>
+    <p class="stack">Python · symmetric-key cryptography · session state</p>
+  </div>
+
+  <h2>Experience</h2>
+  <div class="entry">
+    <div class="head">
+      <span class="t">Engineer Intern — Deendayal Port Authority</span>
+      <span class="meta">May – Nov 2023</span>
+    </div>
+    <div class="sub">Gandhidham, Gujarat · On-site</div>
+    <ul>
+      <li>Maintained the relational cargo-logging database for Oil Jetty No. 8 (liquid-bulk tanker discharge) — wrote SQL to record and reconcile consignment and vessel data, enforcing validation and integrity across high-volume daily entries.</li>
+      <li>Built a structured logging and audit trail of consignment and vessel events through discharge, making every cargo movement traceable and reconcilable end to end.</li>
+      <li>Produced tracking reports and dashboards over the logged data, giving operations real-time visibility into throughput and surfacing discrepancies early.</li>
+    </ul>
+  </div>
+
+  <h2>Honors</h2>
+  <ul>
+    <li>GATE CS &amp; IT 2025 — 59.62 / 100; GATE DS &amp; AI 2024 — 62.67 / 100; JEE Main 2020 — 98.28 percentile</li>
+    <li>Winner, All-India Inter-NIT Chess (2022); Runner-up, All-India Inter-NIT Football (2023)</li>
+    <li>Head, Publication Team — Technoesis 2023, NIT Silchar</li>
+  </ul>
+
+</div>
+</body>
+</html>
