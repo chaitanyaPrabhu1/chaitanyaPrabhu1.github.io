@@ -259,12 +259,16 @@
       <h2>Profile</h2>
       <p class="lede">
         Backend engineer. I build high-performance, fault-tolerant services and the systems
-        beneath them — from the language runtime down to the bytes on the wire. Dropped out of
-        IIIT Hyderabad. My work, in C++ and Python, centers on distributed systems, network
-        programming, applied cryptography, and the backend services that tie them together —
-        REST and GraphQL APIs, microservices, and the databases, caching, and containerized
-        infrastructure that keep them fast and reliable.
+        beneath them — from the language runtime down to the bytes on the wire.
       </p>
+      <p>
+        My core is C++ for the performance-critical paths and JavaScript/TypeScript for the
+        services around them. I design data layers with SQL and Redis, containerize with Docker,
+        and orchestrate at scale on Kubernetes across AWS. My work centers on distributed systems,
+        network programming, and the unglamorous reliability problems — backpressure, failover,
+        consistency — that decide whether a system holds up under load.
+      </p>
+      <p>Dropped out of IIIT Hyderabad to build it.</p>
 
       <h2>Selected Projects</h2>
 
@@ -355,11 +359,11 @@
           <span class="when">May – Nov 2023</span>
         </div>
         <span class="what">Gandhidham, Gujarat · On-site</span>
-        <p>
-          Worked on the cargo-logging database for Oil Jetty No.&nbsp;8, which handles liquid-bulk
-          consignments coming off tankers. Kept the records accurate — logging incoming
-          consignments and vessel details as cargo was discharged.
-        </p>
+        <ul style="margin-top:0.45rem;">
+          <li>Maintained the relational cargo-logging database for Oil Jetty No.&nbsp;8 (liquid-bulk tanker discharge) — wrote SQL to record and reconcile consignment and vessel data, enforcing validation and integrity across high-volume daily entries.</li>
+          <li>Built a structured logging and audit trail of consignment and vessel events through discharge, making every cargo movement traceable and the records reconcilable end to end.</li>
+          <li>Produced tracking reports and dashboards over the logged data, giving operations real-time visibility into jetty throughput and surfacing discrepancies early.</li>
+        </ul>
       </div>
 
     </section>
