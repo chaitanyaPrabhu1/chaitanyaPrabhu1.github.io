@@ -1,0 +1,156 @@
+% Chaitanya Prabhu — Résumé
+% Compile with pdfLaTeX (e.g. Overleaf, or: latexmk -pdf resume.tex).
+% Fonts: Source Serif Pro (body) + Source Sans Pro (headings) — both ship with TeX Live.
+
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[top=14mm,bottom=14mm,left=15mm,right=15mm]{geometry}
+\usepackage[default]{sourceserifpro}
+\usepackage{sourcesanspro}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{ink}{HTML}{17160F}
+\definecolor{muted}{HTML}{4B493F}
+\definecolor{faint}{HTML}{6C6A5F}
+\definecolor{rulec}{HTML}{C2C2B8}
+
+\hypersetup{colorlinks=true, urlcolor=ink}
+\color{ink}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\linespread{1.05}
+
+% ---- section headers: tracked uppercase sans, hairline rule under ----
+\titleformat{\section}
+  {\normalfont\sffamily\bfseries\footnotesize\color{ink}}
+  {}{0pt}
+  {\textls[140]{\MakeUppercase{#1}}}
+  [\vspace{1.5pt}{\color{rulec}\titlerule[0.5pt]}]
+\titlespacing*{\section}{0pt}{9pt}{4pt}
+
+% ---- tight bullets with a small square marker ----
+\setlist[itemize]{leftmargin=3.8mm, itemsep=1.5pt, topsep=2pt, parsep=0pt,
+  label={\raisebox{0.25ex}{\color{faint}\rule{1.5pt}{1.5pt}}}}
+
+\newcommand{\mdot}{\,{\color{faint}\textperiodcentered}\,}
+
+% entry: bold title (left) + tracked uppercase date (right)
+\newcommand{\entry}[2]{%
+  \par\smallskip\noindent
+  {\sffamily\bfseries\small #1}\hfill
+  {\sffamily\scriptsize\color{faint}\textls[60]{\MakeUppercase{#2}}}\par}
+
+% small group subhead
+\newcommand{\subhead}[1]{%
+  \par\smallskip{\sffamily\bfseries\scriptsize\color{muted}\textls[120]{\MakeUppercase{#1}}}\par\vspace{1pt}}
+
+% tech stack line under a project
+\newcommand{\stack}[1]{%
+  \par\vspace{1.5pt}\hspace*{3.8mm}{\sffamily\scriptsize\color{muted}\textls[40]{\MakeUppercase{#1}}}\par}
+
+% skill row
+\newcommand{\skill}[2]{%
+  {\sffamily\bfseries\scriptsize\color{muted}\textls[30]{\MakeUppercase{#1}}} & #2 \\[2.5pt]}
+
+\begin{document}
+
+% ============ Header ============
+{\sffamily\bfseries\fontsize{21}{23}\selectfont\textls[90]{\MakeUppercase{Chaitanya Prabhu}}}\par
+\vspace{3pt}
+{\sffamily\footnotesize\color{muted}\textls[180]{\MakeUppercase{Backend Engineer}}}\par
+\vspace{5pt}
+{\sffamily\footnotesize
+\href{mailto:chaitanyasprabhu@gmail.com}{chaitanyasprabhu@gmail.com}\mdot
+\href{https://github.com/chaitanyaPrabhu1}{github.com/chaitanyaPrabhu1}\mdot
+\href{https://www.linkedin.com/in/chaitanya-p-82a534312/}{linkedin.com/in/chaitanya-p}\mdot
+New Delhi, India}\par
+\vspace{4pt}{\color{ink}\hrule height 1.1pt}
+
+% ============ Summary ============
+\vspace{7pt}
+Backend engineer building high-performance, fault-tolerant services and the systems beneath
+them --- from the language runtime down to the bytes on the wire. Core in C++ for the
+performance-critical paths and JavaScript/TypeScript for the services around them; data layers
+in SQL and Redis, containerized with Docker and orchestrated on Kubernetes across AWS. Focused
+on distributed systems, network programming, and the reliability problems --- backpressure,
+failover, consistency --- that decide whether a system holds up under load.
+
+% ============ Technical Skills ============
+\section{Technical Skills}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{27mm} >{\raggedright\arraybackslash}p{\dimexpr\linewidth-27mm\relax}@{}}
+\skill{Languages}{C, C++, Python, Java, JavaScript / TypeScript, SQL, Bash}
+\skill{Backend \& Web}{Node.js, FastAPI, Next.js, React, REST, GraphQL}
+\skill{Infrastructure}{Docker, Kubernetes, AWS, PostgreSQL, Redis, MySQL, MongoDB}
+\skill{Focus}{Distributed systems, performance engineering, applied cryptography, microservices, RAG / LLM pipelines}
+\end{tabular}
+
+% ============ Education ============
+\section{Education}
+\entry{IIIT Hyderabad --- M.Tech, Computer Science \textnormal{\textit{(withdrew)}}}{2025 -- 2026}
+\entry{NIT Silchar --- B.Tech, Civil Engineering}{2020 -- 2024}
+{\small\color{muted}Coursework: Advanced Operating Systems, Software System Development, Data Structures \& Algorithms, System \& Network Security.}\par
+
+% ============ Personal Projects ============
+\section{Personal Projects}
+
+\subhead{Systems \& Networking}
+
+\entry{\href{https://github.com/chaitanyaPrabhu1/Peer-to-Peer-File-Sharing-Distributed-System}{Peer-to-Peer File-Sharing Distributed System}}{C++17 · 2026}
+\begin{itemize}
+  \item BitTorrent-style content distribution on raw POSIX sockets with zero dependencies; control/data-plane split keeps a 2-node tracker cluster holding metadata only while 512 KiB pieces move peer-to-peer, with idempotent op-based replication and transparent fail-over via RPC retry and session replay.
+  \item Rarest-first scheduling with per-piece SHA-1 verify-before-commit; O(1)-in-file-size memory via positional I/O and streaming hashes --- 200 MB transfer in roughly 7 MB RSS. Verified clean under ASan / UBSan / LeakSanitizer.
+\end{itemize}
+\stack{C++17 · POSIX sockets · op-based replication · SHA-1}
+
+\entry{\href{https://github.com/chaitanyaPrabhu1/Posix-Shell}{POSIX Shell}}{C++17 · 2026}
+\begin{itemize}
+  \item Interactive Unix shell built directly on process-management primitives: built-ins, I/O redirection, arbitrary-depth pipelines, background job control, full signal handling, tab completion, and persistent history.
+\end{itemize}
+\stack{C++17 · fork / exec · pipes · signals}
+
+\subhead{Security \& Cryptography}
+
+\entry{\href{https://github.com/chaitanyaPrabhu1/Kerberos-Under-Partial-Compromise-using-Schnorr-Multi-Signatures}{Kerberos Under Partial Compromise}}{Python · 2026}
+\begin{itemize}
+  \item Kerberos-inspired authentication resilient to single-authority compromise via a 2-of-3 Schnorr multi-signature across distributed Authentication / Ticket-Granting servers; AES-256-CBC tickets; ships attack simulations for key leakage and offline-authority compromise.
+\end{itemize}
+\stack{Python · Schnorr multi-signatures · AES-256-CBC · threshold cryptography}
+
+\entry{\href{https://github.com/chaitanyaPrabhu1/Secure-UAV-Command-and-Control-System-with-Asymmetric-Keys-and-Digital-Signatures}{Secure UAV Command \& Control System}}{C++17 · 2026}
+\begin{itemize}
+  \item Encrypted command-and-control between a Mission Control Center and a drone fleet; hand-implemented 2048-bit ElGamal, HMAC-SHA256, and AES-256-CBC for mutual authentication, session- and group-key establishment, and fleet-wide broadcast --- sub-500 ms handshake.
+\end{itemize}
+\stack{C++17 · ElGamal 2048-bit · HMAC-SHA256 · AES-256-CBC}
+
+\entry{\href{https://github.com/chaitanyaPrabhu1/Secure-Multi-Client-Communication-with-Symmetric-Keys}{Secure Multi-Client Communication}}{Python · 2026}
+\begin{itemize}
+  \item Stateful, symmetric-key secure-communication protocol between a server and multiple clients, designed to hold up in a hostile network environment.
+\end{itemize}
+\stack{Python · symmetric-key cryptography · session state}
+
+% ============ Experience ============
+\section{Experience}
+\entry{Engineer Intern --- Deendayal Port Authority}{May -- Nov 2023}
+{\itshape\color{muted}\small Gandhidham, Gujarat · On-site}
+\begin{itemize}
+  \item Maintained the relational cargo-logging database for Oil Jetty No.\ 8 (liquid-bulk tanker discharge) --- wrote SQL to record and reconcile consignment and vessel data, enforcing validation and integrity across high-volume daily entries.
+  \item Built a structured logging and audit trail of consignment and vessel events through discharge, making every cargo movement traceable and reconcilable end to end.
+  \item Produced tracking reports and dashboards over the logged data, giving operations real-time visibility into throughput and surfacing discrepancies early.
+\end{itemize}
+
+% ============ Honors ============
+\section{Honors}
+\begin{itemize}
+  \item GATE CS \& IT 2025 --- 59.62 / 100; GATE DS \& AI 2024 --- 62.67 / 100; JEE Main 2020 --- 98.28 percentile
+  \item Winner, All-India Inter-NIT Chess (2022); Runner-up, All-India Inter-NIT Football (2023)
+  \item Head, Publication Team --- Technoesis 2023, NIT Silchar
+\end{itemize}
+
+\end{document}
