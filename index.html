@@ -492,39 +492,6 @@
 
   </div>
 
-  <style>
-    .rollgate { position: fixed; top: 14px; right: 16px; z-index: 1000; text-align: right; max-width: 260px; }
-    .rollgate label { display: block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); margin: 0 0 0.4rem; }
-    .rollgate input { font-family: var(--sans); font-size: 0.82rem; text-align: center; letter-spacing: 0.14em; color: var(--ink); background: var(--paper); border: 1px solid var(--rule-2); border-radius: 4px; padding: 0.42rem 0.8rem; width: 230px; outline: none; transition: border-color .15s, box-shadow .15s; }
-    .rollgate input::placeholder { color: var(--faint); letter-spacing: 0.1em; }
-    .rollgate input:focus { border-color: var(--navy-2); box-shadow: 0 0 0 3px rgba(47,99,160,0.12); }
-    .rollrow { display: inline-flex; gap: 0.45rem; align-items: stretch; }
-    .rollgate button { font-family: var(--sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--navy); border: 1px solid var(--navy); border-radius: 4px; padding: 0 0.85rem; cursor: pointer; transition: background .15s, border-color .15s; }
-    .rollgate button:hover { background: var(--navy-2); border-color: var(--navy-2); }
-    .rollout { min-height: 1.1rem; margin: 0.5rem 0 0; font-size: 0.78rem; letter-spacing: 0.01em; color: var(--faint); transition: opacity .2s; }
-    .rollout.err { color: #b04545; }
-    .rollout.ok  { color: var(--navy); font-weight: 700; }
-    .heart { position: fixed; bottom: -28px; line-height: 1; pointer-events: none; z-index: 9999; opacity: 0; will-change: transform, opacity; animation: heart-rise 4s ease-in forwards; }
-    @keyframes heart-rise {
-      0%   { opacity: 0; transform: translateY(0) scale(0.6) rotate(-6deg); }
-      12%  { opacity: 0.85; }
-      100% { opacity: 0; transform: translateY(-72vh) scale(1.05) rotate(8deg); }
-    }
-    @media (prefers-reduced-motion: reduce) { .heart { display: none; } }
-  </style>
-
-  <div class="rollgate">
-    <form id="rollform" autocomplete="off" novalidate>
-      <label for="rollin">Enter your IIIT roll number</label>
-      <span class="rollrow">
-        <input id="rollin" type="text" inputmode="numeric" maxlength="14"
-               placeholder="20XXXXXXXX" aria-label="IIIT roll number">
-        <button id="rollbtn" type="submit">Check</button>
-      </span>
-    </form>
-    <p class="rollout" id="rollout" role="status" aria-live="polite">this works</p>
-  </div>
-
   <footer>
     <a href="mailto:chaitanyasprabhu@gmail.com">chaitanyasprabhu@gmail.com</a><span class="sep">·</span>
     <a href="https://github.com/chaitanyaPrabhu1">GitHub</a><span class="sep">·</span>
@@ -534,79 +501,5 @@
 
 </div>
 
-<script>
-  (function () {
-    var form  = document.getElementById('rollform');
-    var input = document.getElementById('rollin');
-    var out   = document.getElementById('rollout');
-    if (!form || !input || !out) return;
-
-    // The roll number is the key — never written in the clear here.
-    // stored reversed; reversed back at runtime — viewing source won't spoil it.
-    var KEY = '6104024202'.split('').reverse().join('');
-
-    var reduceMotion = window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    function rng() { return Math.random(); }
-
-    function hearts() {
-      if (reduceMotion) return;
-      var glyphs = ['♥', '❤️', '💙', '🩵'];
-      for (var i = 0; i < 11; i++) {
-        var h = document.createElement('span');
-        h.className = 'heart';
-        h.textContent = glyphs[i % glyphs.length];
-        h.style.left = (6 + rng() * 88) + 'vw';
-        h.style.fontSize = (14 + rng() * 18) + 'px';
-        h.style.animationDelay = (rng() * 0.9) + 's';
-        h.style.animationDuration = (3.4 + rng() * 1.8) + 's';
-        document.body.appendChild(h);
-        (function (node) {
-          setTimeout(function () { node.remove(); }, 6200);
-        })(h);
-      }
-    }
-
-    var unlocked = false;
-
-    function resetDefault() {
-      unlocked = false;
-      out.className = 'rollout';
-      out.textContent = 'this works';
-    }
-
-    function reveal() {
-      out.className = 'rollout ok';
-      out.innerHTML = 'Hi, Love! 💙 ' +
-        '<span style="font-weight:400;color:var(--muted)">— I love yashi</span>';
-      if (!unlocked) { unlocked = true; hearts(); }
-    }
-
-    // Live: reveal the moment the right number is typed (no Enter needed).
-    input.addEventListener('input', function () {
-      var v = input.value.replace(/\s+/g, '');
-      if (v === KEY) {
-        reveal();
-      } else if (unlocked || v === '') {
-        resetDefault();
-      }
-    });
-
-    // Enter / Check button: full check, including the message for wrong numbers.
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var v = input.value.replace(/\s+/g, '');
-      if (v === '') {
-        resetDefault();
-      } else if (v === KEY) {
-        reveal();
-      } else {
-        out.className = 'rollout err';
-        out.textContent = 'it doesnot work just for you.';
-      }
-    });
-  })();
-</script>
 </body>
 </html>
