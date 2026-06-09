@@ -154,10 +154,20 @@
   }
 
   @media print {
-    @page { size: A4; margin: 13mm; }
-    body { background: #fff; padding: 0; }
-    .sheet { width: auto; min-height: 0; padding: 0; box-shadow: none; font-size: 9.6pt; }
+    @page { size: A4; margin: 10mm 12mm; }
+    html, body { background: #fff; padding: 0; margin: 0; }
+    .sheet { width: auto; min-height: 0; padding: 0; box-shadow: none; font-size: 8.6pt; line-height: 1.28; }
     a { border-bottom: none; }
+    .role { margin: 0.26rem 0 0.42rem; }
+    .summary { margin-top: 0.48rem; }
+    p { margin-bottom: 0.32rem; }
+    h2 { margin: 0.66rem 0 0.32rem; }
+    .entry { margin-bottom: 0.36rem; }
+    .skills .row { margin-bottom: 0.06rem; }
+    .subhead { margin: 0.42rem 0 0.26rem; }
+    li { margin-bottom: 0.06rem; }
+    .stack { margin-top: 0.12rem; }
+    .honors li { margin-bottom: 0.26rem; }
     .entry, h2 { page-break-inside: avoid; }
     h2 { page-break-after: avoid; }
   }
