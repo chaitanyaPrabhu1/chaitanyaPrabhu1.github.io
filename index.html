@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0d1117">
 <title>Chaitanya Prabhu — Systems / Backend Engineer</title>
 <meta name="description" content="Chaitanya Prabhu — systems / backend engineer. Distributed systems, APIs, applied cryptography, and the infrastructure behind fast, reliable services.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2213%22%20fill%3D%22%2321426b%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2244%22%20font-family%3D%22ui-monospace%2CMenlo%2CConsolas%2Cmonospace%22%20font-size%3D%2229%22%20font-weight%3D%22700%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3ECP%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2213%22%20fill%3D%22%230d1117%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2244%22%20font-family%3D%22ui-monospace%2CMenlo%2CConsolas%2Cmonospace%22%20font-size%3D%2229%22%20font-weight%3D%22700%22%20fill%3D%22%23f0b429%22%20text-anchor%3D%22middle%22%3ECP%3C%2Ftext%3E%3C%2Fsvg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Chaitanya Prabhu — Systems / Backend Engineer">
 <meta property="og:description" content="Distributed systems, low-latency C++, and applied cryptography — the infrastructure behind fast, reliable services.">
@@ -32,9 +32,9 @@
     --ink-2:   #c9d1d9;
     --muted:   #8b949e;   /* comment grey */
     --faint:   #6e7681;
-    --navy:    #3fb950;   /* terminal green (accent) */
-    --navy-2:  #56d364;   /* brighter green (hover) */
-    --blue:    #58a6ff;   /* link/keyword blue */
+    --navy:    #f0b429;   /* amber (accent) — CRT-terminal nod, uncommon */
+    --navy-2:  #f7c948;   /* brighter amber (hover) */
+    --blue:    #6cb6ff;   /* link blue */
     --rule:    #21262d;
     --rule-2:  #30363d;
     --sans: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
@@ -63,7 +63,7 @@
   @media (max-width: 1300px) { .bg-flowers, body::before, body::after { display: none; } }
   @media print { .bg-flowers { display: none; } }
 
-  .page { position: relative; z-index: 1; max-width: 72rem; margin: 0 auto; }
+  .page { position: relative; z-index: 1; max-width: 92rem; margin: 0 auto; }
 
   ::selection { background: rgba(63,185,80,0.32); color: #fff; }
 
@@ -72,11 +72,37 @@
 
   /* ---------- Header ---------- */
   header { padding: 0 0 1.3rem; border-bottom: 1px solid var(--rule-2); margin-bottom: 1.6rem; }
-  h1 { font-size: 2rem; font-weight: 700; letter-spacing: 0; line-height: 1.1; margin: 0 0 0.5rem; color: var(--ink); }
-  h1::after { content: "_"; color: var(--navy); margin-left: 0.1rem; animation: caret 1.1s steps(1) infinite; }
-  @keyframes caret { 50% { opacity: 0; } }
-  .title { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 0.95rem; }
-  .title::before { content: "$ "; color: var(--navy); }
+  .eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--navy); margin: 0 0 0.7rem; }
+  .eyebrow .sep { color: var(--rule-2); }
+  h1 { font-size: 2.7rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; margin: 0 0 0.9rem; color: var(--ink); }
+  .pitch { font-size: 1.15rem; line-height: 1.5; color: var(--ink-2); max-width: 40ch; margin: 0 0 1.6rem; }
+  .pitch .hl { color: var(--navy); }
+
+  /* ---------- Stat row (recruiter proof) ---------- */
+  .stats { list-style: none; display: flex; flex-wrap: wrap; gap: 0; margin: 0 0 1.6rem; padding: 0;
+           border: 1px solid var(--rule-2); border-radius: 6px; overflow: hidden; width: fit-content; max-width: 100%; }
+  .stats li { padding: 0.7rem 1.4rem; border-right: 1px solid var(--rule-2); display: flex; flex-direction: column; gap: 0.15rem; }
+  .stats li:last-child { border-right: none; }
+  .stats b { font-size: 1.15rem; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
+  .stats span { font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+  /* ---------- Hero layout + terminal card ---------- */
+  header.hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3.5rem; align-items: center; }
+  .hero-left { min-width: 0; }
+  .term { width: min(430px, 40vw); border: 1px solid var(--rule-2); border-radius: 8px; overflow: hidden;
+          background: #0a0b0e; box-shadow: 0 14px 44px rgba(0,0,0,0.45); }
+  .term-bar { display: flex; gap: 7px; padding: 0.6rem 0.85rem; border-bottom: 1px solid var(--rule); background: var(--paper); }
+  .term-bar span { width: 11px; height: 11px; border-radius: 50%; background: var(--rule-2); }
+  .term-bar span:nth-child(1) { background: #ff5f57; }
+  .term-bar span:nth-child(2) { background: #febc2e; }
+  .term-bar span:nth-child(3) { background: #28c840; }
+  .term-body { margin: 0; padding: 1rem 1.15rem 1.15rem; font-size: 0.73rem; line-height: 1.85;
+               color: var(--ink-2); white-space: pre; overflow-x: auto; }
+  .term-body .p { color: var(--navy); }
+  .term-body .c { color: var(--muted); }
+  .term-body .cur { color: var(--navy); animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (max-width: 980px) { header.hero { grid-template-columns: 1fr; } .term { width: 100%; max-width: 460px; } }
   .contact { font-size: 0.78rem; letter-spacing: 0.01em; margin: 0; color: var(--muted); }
   .contact a { border-bottom: none; color: var(--navy); }
   .contact a:hover { border-bottom: 1px solid var(--navy-2); }
@@ -89,21 +115,22 @@
   .section-nav .sep { color: var(--faint); }
 
   /* ---------- Two-column body ---------- */
-  .cols { display: grid; grid-template-columns: 1.6fr 1fr; gap: 0 6rem; align-items: start; }
+  .cols { display: grid; grid-template-columns: 1.3fr 1fr; gap: 0 7rem; align-items: start; }
   .cols > * > h2:first-child { margin-top: 0; }
   .interests-block { grid-column: 1 / -1; margin-top: 3.2rem; padding-top: 1.8rem; border-top: 1px solid var(--rule-2); }
 
   /* ---------- Sections ---------- */
   h2 { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--navy); margin: 2.4rem 0 1.1rem; padding-bottom: 0.45rem; border-bottom: 1px solid var(--rule); scroll-margin-top: 1.4rem; }
-  h2::before { content: "// "; color: var(--faint); font-weight: 400; }
+  h2::before { content: ""; display: inline-block; width: 0.7rem; height: 2px; background: var(--navy); vertical-align: middle; margin: -0.15rem 0.55rem 0 0; }
   h2:target { background: rgba(63,185,80,0.12); }
   .subhead { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin: 1.5rem 0 0.8rem; }
   p { margin: 0 0 1rem; }
   .lede { font-size: 1rem; color: var(--ink-2); }
 
   /* ---------- Projects ---------- */
-  details.proj { border: 1px solid var(--rule); background: var(--paper); border-radius: 3px; padding: 0.8rem 1rem; margin: 0 0 0.8rem; transition: border-color .15s, box-shadow .15s; }
-  @media (hover: hover) { details.proj:hover { border-color: var(--navy); box-shadow: none; } }
+  details.proj { border: 1px solid var(--rule-2); background: var(--paper); border-radius: 6px; padding: 0.8rem 1rem; margin: 0 0 0.8rem; transition: border-color .18s, box-shadow .18s, transform .18s; }
+  @media (hover: hover) { details.proj:hover { border-color: var(--navy); box-shadow: 0 8px 26px rgba(0,0,0,0.35); transform: translateY(-2px); } }
+  details.proj:focus-within { border-color: var(--navy); outline: 2px solid rgba(240,180,41,0.35); outline-offset: 2px; }
   details.proj > summary { display: block; cursor: pointer; list-style: none; outline: none; }
   details.proj > summary::-webkit-details-marker { display: none; }
   .proj-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin: 0 0 0.25rem; }
@@ -115,6 +142,10 @@
   details.proj[open] .chev { transform: rotate(90deg); }
   .proj p { font-size: 0.9rem; margin: 0.1rem 0 0.5rem; color: var(--ink-2); }
   .stack { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); margin: 0; }
+  .metric { display: inline-block; margin: 0.55rem 0 0; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em;
+            color: var(--navy); background: rgba(240,180,41,0.09); border: 1px solid rgba(240,180,41,0.4);
+            padding: 0.14rem 0.55rem; border-radius: 999px; white-space: nowrap; }
+  .metric::before { content: "› "; color: var(--navy); }
   .proj-link { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; margin: 0.6rem 0 0; }
   .proj-link a { border-bottom: none; color: var(--navy); }
   .proj-link a:hover { border-bottom: 1px solid var(--navy-2); }
@@ -159,7 +190,8 @@
   /* ---------- Reduced motion ---------- */
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    h1::after { animation: none; }
+    .term-body .cur { animation: none; }
+    details.proj { transition: none; }
   }
 
   /* ---------- Responsive ---------- */
@@ -179,8 +211,10 @@
     body { padding: 0; color: #000; }
     body::before, body::after { display: none !important; }
     .page { max-width: none; }
-    .section-nav { display: none; }
+    .section-nav, .term { display: none; }
+    header.hero { display: block; }
     a { color: #000; border-bottom: none; }
+    .stats b, .pitch .hl, .eyebrow, h2 { color: #000; }
     .cols { display: block; }
     .cols .side { margin-top: 1.6rem; }
     details.proj { border: 1px solid #000; box-shadow: none; }
@@ -200,17 +234,44 @@
 </div>
 <div class="page">
 
-  <header>
+  <header class="hero">
+    <div class="hero-left">
+    <p class="eyebrow">Systems / Backend Engineer<span class="sep">·</span>New Delhi, India</p>
     <h1>Chaitanya Prabhu</h1>
-    <p class="title">Systems / Backend Engineer</p>
+    <p class="pitch">I build high-performance, fault-tolerant backend systems <span class="hl">from scratch</span> — runtimes, consensus, and applied cryptography, down to the bytes on the wire.</p>
+
+    <ul class="stats" aria-label="Highlights">
+      <li><b>~10k req/s</b><span>HTTP/1.1 server · p99 ≈ 8 ms</span></li>
+      <li><b>200 MB → 7 MB</b><span>P2P transfer, flat RSS</span></li>
+      <li><b>3-node Raft</b><span>survives a hard SIGKILL</span></li>
+      <li><b>zero deps</b><span>raw POSIX sockets · C / C++</span></li>
+    </ul>
+
     <p class="contact">
-      <a href="mailto:chaitanyasprabhu@gmail.com">chaitanyasprabhu@gmail.com</a><span class="sep">·</span>
+      <a href="mailto:chaitanyasprabhu@gmail.com">Email</a><span class="sep">·</span>
       <a href="https://github.com/chaitanyaPrabhu1">GitHub</a><span class="sep">·</span>
       <a href="https://www.linkedin.com/in/chaitanya-p-82a534312/">LinkedIn</a><span class="sep">·</span>
       <a href="resume-backend.html">Résumé · Backend</a><span class="sep">·</span>
-      <a href="resume-systems.html">Résumé · Systems</a><span class="sep">·</span>
-      New Delhi, India
+      <a href="resume-systems.html">Résumé · Systems</a>
     </p>
+    </div>
+
+    <aside class="term" aria-label="Terminal summary">
+      <div class="term-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+<pre class="term-body"><span class="p">~ $</span> whoami
+chaitanya — systems / backend engineer
+
+<span class="p">~ $</span> cat focus.txt
+distributed systems · performance · applied crypto
+
+<span class="p">~ $</span> ls ~/projects <span class="c">--sort=impact</span>
+forge-http      <span class="c"># 10k req/s HTTP/1.1 server</span>
+raft-kv         <span class="c"># consensus KV, survives SIGKILL</span>
+p2p-share       <span class="c"># 200 MB in ~7 MB RSS</span>
+kerberos-msig   <span class="c"># 2-of-3 threshold auth</span>
+
+<span class="p">~ $</span> <span class="cur">█</span></pre>
+    </aside>
   </header>
 
   <nav class="section-nav" aria-label="Sections">
@@ -250,6 +311,7 @@
             <span class="meta">C · 2026 <span class="chev" aria-hidden="true">&#9656;</span></span>
           </span>
           <span class="tag">A three-node distributed key-value store built on the Raft consensus algorithm in pure C, with zero external dependencies.</span>
+          <span class="metric">survives a hard SIGKILL</span>
           <span class="stack">C · Raft consensus · POSIX sockets · O_DSYNC durability · pthreads · zero deps</span>
         </summary>
         <p>
@@ -278,6 +340,7 @@
             <span class="meta">TypeScript · 2026 <span class="chev" aria-hidden="true">&#9656;</span></span>
           </span>
           <span class="tag">A production-grade HTTP/1.1 server framework written from scratch on raw TCP sockets, with zero runtime dependencies.</span>
+          <span class="metric">~10k req/s · p99 ≈ 8 ms</span>
           <span class="stack">TypeScript · raw TCP sockets · HTTP/1.1 · WebSockets · TLS · zero deps</span>
         </summary>
         <p>
@@ -306,6 +369,7 @@
             <span class="meta">TypeScript · 2026 <span class="chev" aria-hidden="true">&#9656;</span></span>
           </span>
           <span class="tag">Encrypt a secret and get back a one-time URL — readable exactly once, then deleted, with the key never touching the server.</span>
+          <span class="metric">zero-knowledge · atomic GETDEL</span>
           <span class="stack">TypeScript · AES-256-GCM · HKDF · Redis GETDEL · zero server-side key storage</span>
         </summary>
         <p>
@@ -336,6 +400,7 @@
             <span class="meta">C++17 · 2026 <span class="chev" aria-hidden="true">&#9656;</span></span>
           </span>
           <span class="tag">Peer-to-peer content distribution over raw POSIX sockets, zero external dependencies.</span>
+          <span class="metric">200 MB transfer in ~7 MB RSS</span>
           <span class="stack">C++17 · POSIX sockets · op-based replication · SHA-1</span>
         </summary>
         <p>
@@ -361,6 +426,7 @@
             <span class="meta">C++17 · 2026 <span class="chev" aria-hidden="true">&#9656;</span></span>
           </span>
           <span class="tag">Interactive Unix shell built on process-management primitives.</span>
+          <span class="metric">pipelines · jobs · signals</span>
           <span class="stack">C++17 · fork / exec · pipes · signals</span>
         </summary>
         <p>
@@ -381,6 +447,7 @@
             <span class="meta">Python · 2026 <span class="chev" aria-hidden="true">&#9656;</span></span>
           </span>
           <span class="tag">Kerberos-style auth that survives compromise of any single authority.</span>
+          <span class="metric">2-of-3 Schnorr multisig</span>
           <span class="stack">Python · Schnorr multi-signatures · AES-256-CBC · threshold cryptography</span>
         </summary>
         <p>
@@ -400,6 +467,7 @@
             <span class="meta">C++17 · 2026 <span class="chev" aria-hidden="true">&#9656;</span></span>
           </span>
           <span class="tag">Encrypted command link between mission control and a drone fleet.</span>
+          <span class="metric">sub-500 ms handshake</span>
           <span class="stack">C++17 · ElGamal 2048-bit · HMAC-SHA256 · AES-256-CBC</span>
         </summary>
         <p>
@@ -418,6 +486,7 @@
             <span class="meta">Python · 2026 <span class="chev" aria-hidden="true">&#9656;</span></span>
           </span>
           <span class="tag">Symmetric-key secure protocol for a server and many clients.</span>
+          <span class="metric">symmetric-key · multi-client</span>
           <span class="stack">Python · symmetric-key cryptography · session state</span>
         </summary>
         <p>
